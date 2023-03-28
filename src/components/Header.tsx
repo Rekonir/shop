@@ -8,9 +8,14 @@ import LogoImgT from '../assets/logo t.svg'
 import LogoImgA from '../assets/logo a.svg'
 import LogoImgN from '../assets/logo n.svg'
 import btnImg from '../assets/btn icon.png'
+import btnImgBlack from '../assets/btn icon black.png'
+
 import SearchIcon from '../assets/saerch icon.svg'
+import SearchIconBlack from '../assets/search icon black.svg'
+
 import CallImg from '../assets/call img.png'
 import PriceImg from '../assets/price-list.svg'
+import BurgMenu from '../assets/burgerMenu.svg'
 import Cart from './Cart';
 
 
@@ -38,6 +43,9 @@ const Header: FC = () => {
 
             <div className='Header__Down'>
                 <div className="Header__content">
+                    <div className="btn__menu">
+                        <img src={BurgMenu} alt="Меню" />
+                    </div>
                     <div className="logo__box">
                         <img className='logo' src={LogoImg} alt='логотип'></img>
                         <img className='logo1' src={LogoImg1} alt='логотип'></img>
@@ -78,7 +86,18 @@ const Header: FC = () => {
 
                 </div>
             </div>
-
+            <div className="Mobile__Down">
+                <div className="btn">
+                    <img src={btnImgBlack} alt="" />
+                    <p>Каталог</p>
+                </div>
+                <div className="inp__box">
+                    <div className="inp__icon">
+                        <img src={SearchIconBlack} alt="Поиск" />
+                    </div>
+                    <p>Поиск</p>
+                </div>
+            </div>
         </div >
     );
 };

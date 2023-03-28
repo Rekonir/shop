@@ -3,8 +3,16 @@ import React from 'react';
 const UpFilter = () => {
     return (
         <div className='UpFilter'>
+            <div className="map__nav">
+                <ul>
+                    <li>Главная</li>
+                    <li>Косметика и гигиена</li>
+                </ul>
+                <p className='back'>Назад</p>
+            </div>
             <div className="UpFilter__sort">
                 <h1 className="Page__header">Косметика и гигиена</h1>
+                <h2 className='Page__subheader'> ПОДБОР ПО ПАРАМЕТРАМ </h2>
                 <div className="sort">
                     <p>Сортировка:</p>
                     <a href='sad'>Название</a>

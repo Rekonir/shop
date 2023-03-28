@@ -68,7 +68,8 @@ const SideMenu: FC = () => {
                     </div>
                     <div className="btn__del">
                         <img src={Del} alt="удаление" />
-                    </div></div>
+                    </div>
+                </div>
 
             </div>
             <div className="SideMenu__positions">

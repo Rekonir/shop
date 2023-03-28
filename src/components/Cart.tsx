@@ -10,7 +10,7 @@ const Cart: FC = () => {
             </button>
             <div className="Cart__text">
                 <p>Корзина</p>
-                <p className='cost'>12000T</p>
+                <p className='cost'>12000 ₽</p>
             </div>
 
         </div>
