@@ -98,6 +98,8 @@ const Header: FC = () => {
                     <p>Поиск</p>
                 </div>
             </div>
+            <p className='back'>Назад</p>
+
         </div >
     );
 };

@@ -8,7 +8,6 @@ const UpFilter = () => {
                     <li>Главная</li>
                     <li>Косметика и гигиена</li>
                 </ul>
-                <p className='back'>Назад</p>
             </div>
             <div className="UpFilter__sort">
                 <h1 className="Page__header">Косметика и гигиена</h1>
