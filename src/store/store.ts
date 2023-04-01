@@ -9,6 +9,8 @@ const defShow: showType = {
     CatatlodShow: true,
     ThaksShow: false,
     chengeCatalog: GoodsData,
+    CartPool: []
+
 }
 export const ShowReduser = (state = defShow, action: any) => {
     switch (action.type) {
@@ -21,39 +23,49 @@ export const ShowReduser = (state = defShow, action: any) => {
         case "chengeCatalog":
             return { ...state, chengeCatalog: state.chengeCatalog = FilterGoodsData, }
         case "SotrNameUp":
+            const sortUName = state.chengeCatalog.sort((a, b) => a.name.localeCompare(b.name))
+            console.log(sortUName)
             return {
-                ...state, chengeCatalog: state.chengeCatalog = state.chengeCatalog.sort((a, b) => {
-                    const nameA = a.name.toUpperCase();
-                    const nameB = b.name.toUpperCase();
-                    if (nameA < nameB) {
-                        return -1;
-                    }
-                    if (nameA > nameB) {
-                        return 1;
-                    }
-                    return 0;
-                })
+                ...state, chengeCatalog: sortUName
             }
         case "SotrNameDown":
+            const sortDName = state.chengeCatalog.sort((a, b) => b.name.localeCompare(a.name))
+            console.log(sortDName)
             return {
-                ...state, chengeCatalog: state.chengeCatalog = state.chengeCatalog.sort((b, a) => {
-                    const nameA = a.name.toUpperCase();
-                    const nameB = b.name.toUpperCase();
-                    if (nameA < nameB) {
-                        return -1;
-                    }
-                    if (nameA > nameB) {
-                        return 1;
-                    }
-                    return 0;
-                })}
-        case "SotrPriceUp":
-            return { ...state, chengeCatalog: state.chengeCatalog = state.chengeCatalog.sort((a, b) => a.price - b.price), }
+                ...state, chengeCatalog: sortDName
+            }
         case "SotrPriceDown":
-            return { ...state, chengeCatalog: state.chengeCatalog = state.chengeCatalog.sort((a, b) => b.price - a.price) }
-        default: 
-        console.log(state)
-        return state
+            const sortDPtice = state.chengeCatalog.sort((a, b) => b.price - a.price);
+            console.log(sortDPtice)
+            return { ...state, chengeCatalog: sortDPtice }
+        case "SotrPriceUp":
+            const sortUPtice = state.chengeCatalog.sort((a, b) => a.price - b.price);
+            console.log(sortUPtice)
+            return { ...state, chengeCatalog: sortUPtice}
+
+        case "addToCart": {
+
+            const cart = { ...state }
+            const { counter, goods } = action.payload
+
+            const foundProduct = cart.CartPool.find(item => item.id === goods.id)
+
+            if (foundProduct) {
+                foundProduct.counter = foundProduct.counter + 1
+            } else {
+                cart.CartPool.push({
+                    ...goods,
+                    counter,
+                })
+            }
+            console.log(cart.CartPool)
+            return { ...state, CartPool: cart.CartPool }
+        }
+
+        default:
+            return state
+
+
     }
 
 }

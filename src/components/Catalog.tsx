@@ -9,11 +9,9 @@ import { useSelector } from 'react-redux';
 
 const Catalog: FC = () => {
     const chengeCatalog: any = useSelector<showType>(state => state.chengeCatalog)
-    console.log(chengeCatalog)
 
 
     const CatatlodShow = useSelector<showType>(state => state.CatatlodShow)
-    console.log(CatatlodShow)
     const ShowClass = CatatlodShow ? 'show' : 'hide'
     return (
         <div className={`Catalog ${ShowClass}`}>
@@ -32,7 +30,10 @@ const Catalog: FC = () => {
                     <div className="Page__unactive"> 4 </div>
                     <div className="Page__unactive"> 5 </div>
                 </div>
-                <p className="Page__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam interdum ut justo, vestibulum sagittis iaculis iaculis. Quis mattis vulputate feugiat massa vestibulum duis. Faucibus consectetur aliquet sed pellentesque consequat consectetur congue mauris venenatis. Nunc elit, dignissim sed nulla ullamcorper enim, malesuada.</p>
+                <p className="Page__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam interdum ut justo, vestibulum sagittis
+                    iaculis iaculis. Quis mattis vulputate feugiat massa vestibulum duis. Faucibus consectetur aliquet sed pellentesque consequat consectetur
+                    congue mauris venenatis. Nunc elit, dignissim sed nulla ullamcorper enim, malesuada.
+                </p>
             </div >
         </div>
     );

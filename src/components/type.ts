@@ -9,9 +9,11 @@ export interface IGoods {
     description: string,
     price: number,
     usePlace: string[]
+    counter?: number
 }
 export interface IGoodsItem {
-    goods: IGoods
+    goods: IGoods,
+    onChangeCatalog?: any
 }
 export interface ICartItem extends IGoods {
     count: number
@@ -21,10 +23,12 @@ export type showType = {
     CatatlodShow?: boolean,
     ThaksShow?: boolean,
     chengeCatalog?: Array<IGoods>
+    CartPool?: Array<IGoods>
+
 }
 
 export type checkedState = {
-    
+
     RusChecked?: boolean,
     KorChecked?: boolean,
     FrChecked?: boolean,

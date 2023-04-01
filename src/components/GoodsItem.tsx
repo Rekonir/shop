@@ -1,8 +1,16 @@
 import React, { FC } from 'react';
 import { IGoodsItem } from './type';
 import CartImg from '../assets/to cart icon.svg'
+import { useDispatch } from 'react-redux';
+import { addToCart } from '../store/cart/action';
 
 const GoodsItem: FC<IGoodsItem> = ({ goods }) => {
+    
+    const dispatch = useDispatch()
+    const addHandler = () => {
+        const counter = 1
+		dispatch(addToCart(goods, counter))
+    }
     return (
         <div className='Good__position' key={goods.id} >
             <img className='good__img' src={goods.img} alt={goods.name} />
@@ -18,7 +26,7 @@ const GoodsItem: FC<IGoodsItem> = ({ goods }) => {
             </div>
             <div className="good__price">
                 <p> {goods.price} ₽</p>
-                <button className="toCart__btn">
+                <button className="toCart__btn" onClick={addHandler}>
                     в корзину
                     <img src={CartImg} alt="Корзина" />
                 </button>

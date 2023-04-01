@@ -1,5 +1,4 @@
 import React, { FC } from 'react';
-import GoodsData from '../GoodsData.json'
 import Del from '../assets/del.svg'
 import { useDispatch, useSelector } from 'react-redux';
 import { showType } from './type';
@@ -12,6 +11,8 @@ const CartPage: FC = () => {
     console.log(CartShow)
     const ShowClass = CartShow ? 'show' : 'hide'
 
+    const CartData: any  = useSelector<showType>(state => state.CartPool)
+	const Total = CartData.reduce((acc:number, item:any) => acc + item.price, 0)
     
     const dispatch = useDispatch()
     const ShowThxBtn = () => {
@@ -26,7 +27,7 @@ const CartPage: FC = () => {
                     </ul>
                 </div>
                 <h1 className="Page__header">Корзина</h1>
-                {GoodsData.map(goods => {
+                {CartData.map(goods => {
                     return (
                         <div className="Cart__position" key={goods.id}>
                             <img src={goods.img} alt={goods.name} />
@@ -54,7 +55,7 @@ const CartPage: FC = () => {
                     <div className="btn" onClick={ShowThxBtn}>
                         <p>Оформить заказ</p>
                     </div>
-                    <h2 className="price"> Total ₽</h2>
+                    <h2 className="price"> {Total} ₽</h2>
 
                 </div>
 

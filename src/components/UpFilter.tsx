@@ -5,21 +5,20 @@ import { showType } from './type';
 
 
 const UpFilter: FC = () => {
-    const CatatlodShow = useSelector<showType>(state => state.CatatlodShow)
-    console.log(CatatlodShow)
-    const ShowClass = CatatlodShow ? 'show' : 'hide'
 
 
     const dispatch = useDispatch()
 
     const Sort = () => {
-        dispatch({ type: "SotrNameUp" })
         const Sort = document.getElementsByClassName('sort__select')[0] as HTMLSelectElement | null;
         if (Sort.options.selectedIndex === 0) { dispatch({ type: "SotrNameUp" }); console.log(Sort.options.selectedIndex) }
         if (Sort.options.selectedIndex === 1) { dispatch({ type: "SotrNameDown" }); console.log(Sort.options.selectedIndex) }
         if (Sort.options.selectedIndex === 2) { dispatch({ type: "SotrPriceUp" }); console.log(Sort.options.selectedIndex) }
         if (Sort.options.selectedIndex === 3) { dispatch({ type: "SotrPriceDown" }); console.log(Sort.options.selectedIndex) }
     }
+    const CatatlodShow = useSelector<showType>(state => state.CatatlodShow)
+    console.log(CatatlodShow)
+    const ShowClass = CatatlodShow ? 'show' : 'hide'
 
     return (
         <div className={`UpFilter ${ShowClass}`}>
@@ -34,7 +33,7 @@ const UpFilter: FC = () => {
                 <h2 className='Page__subheader'> ПОДБОР ПО ПАРАМЕТРАМ </h2>
                 <div className="sort">
                     <label> Сортировка: </label>
-                    <select className='sort__select' onClick={Sort}>
+                    <select className='sort__select' onChange={Sort}>
                         <option value='SotrNameUp'>от А до Я</option>
                         <option value='SotrNameDown'>от Я до А</option>
                         <option value='SotrPriceUp'>увеличение цены</option>
