@@ -1,23 +1,26 @@
-import React from 'react';
+import React, { FC } from 'react';
 import CartPage from './components/CartPage';
 import Footer from './components/Footer';
-import Goods from './components/Catalog';
 import GoodsPage from './components/GoodsPage';
 import Header from './components/Header';
 import Thanks from './components/Thanks';
 import UpFilter from './components/UpFilter';
+import { Provider } from 'react-redux';
+import { store } from './store/store';
+import Catalog from './components/Catalog';
 
-const App = () => {
+
+const App: FC = () => {
   return (
-    <div>
-      <Header/>
-      <UpFilter/>
-      <Goods/>
-      <GoodsPage/>
-      <CartPage/>
-      <Thanks/>
-      <Footer/>
-    </div>
+    <Provider store={store}>
+      <Header />
+      <UpFilter />
+      <Catalog />
+      <GoodsPage />
+      <CartPage />
+      <Thanks />
+      <Footer />
+    </Provider>
   );
 };
 

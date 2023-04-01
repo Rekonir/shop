@@ -1,12 +1,11 @@
-import React from 'react';
-import GoodsData from '../GoodsData.json'
+import React, { FC } from 'react';
 import PriceImg from '../assets/prise-list black.svg'
 import ActionImg from '../assets/actionImg.svg'
 import CartImg from '../assets/to cart icon.svg'
+import GoodsData from '../GoodsData.json'
 
 
-
-const GoodsPage = () => {
+const GoodsPage:FC = () => {
     return (
         <div>
             {GoodsData.map(goods => {
@@ -16,7 +15,6 @@ const GoodsPage = () => {
                             <ul>
                                 <li>Главная</li>
                                 <li>Косметика и гигиена</li>
-                                <li>{goods.usePlace}</li>
                                 <li>{goods.name}</li>
                             </ul>
                         </div>

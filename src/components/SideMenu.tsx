@@ -6,12 +6,98 @@ import brend4 from '../assets/brend4.svg'
 import brend5 from '../assets/brend5.svg'
 import SearchIcon from '../assets/saerch icon.svg'
 import Del from '../assets/del.svg'
+import GoodsData from '../GoodsData.json'
+import { checkedState } from './type';
+import { useDispatch } from 'react-redux';
 
+export let FilterGoodsData = GoodsData
 
+const DelFilter = () => {
+    const Rus = document.getElementById('Россия') as HTMLInputElement | null;
+    if (Rus != null) {
+        Rus.checked = true;
+    }
+    const Fr = document.getElementById('Франция') as HTMLInputElement | null;
+    if (Fr != null) {
+        Fr.checked = true;
+    }
+    const Kor = document.getElementById('Южная Корея') as HTMLInputElement | null;
+    if (Kor != null) {
+        Kor.checked = true;
+    }
+
+    Rus.checked = false
+    Fr.checked = false
+    Kor.checked = false
+}
 
 const SideMenu: FC = () => {
-    return (
 
+    const Rus = document.getElementById('Россия') as HTMLInputElement | null;
+    if (Rus != null) {
+        Rus.checked = true;
+    }
+    const Fr = document.getElementById('Франция') as HTMLInputElement | null;
+    if (Fr != null) {
+        Fr.checked = true;
+    }
+    const Kor = document.getElementById('Южная Корея') as HTMLInputElement | null;
+    if (Kor != null) {
+        Kor.checked = true;
+    }
+
+    const checkedStates: checkedState = {
+        RusChecked: Rus?.checked,
+        KorChecked: Kor?.checked,
+        FrChecked: Fr?.checked
+    }
+    const RusCheck = () => {
+        checkedStates.RusChecked = !checkedStates.RusChecked
+        console.log(checkedStates.RusChecked)
+
+    }
+    const KorCheck = () => {
+        checkedStates.KorChecked = !checkedStates.KorChecked
+        console.log(checkedStates.KorChecked)
+
+    }
+    const FrCheck = () => {
+        checkedStates.FrChecked = !checkedStates.FrChecked
+        console.log(checkedStates.FrChecked)
+
+    }
+    const Filter = () => {
+
+        const FilterGoods: Array<any> = []
+        const checkedFilter = (chekedPosition) => {
+            const goods = GoodsData
+            for (let i = 0; i < goods.length; i++) {
+                if (goods[i].maker === chekedPosition) {
+                    FilterGoods.push(goods[i])
+                }
+            }
+        }
+
+        checkedStates.RusChecked ? checkedFilter('Россия') : console.log('RusUnChecked')
+        checkedStates.FrChecked ? checkedFilter('Франция') : console.log('FrUnChecked')
+        checkedStates.KorChecked ? checkedFilter('Южная Корея') : console.log('KorUnChecked')
+
+        FilterGoods.length > 0 ? FilterGoodsData = FilterGoods : FilterGoodsData = GoodsData
+
+
+
+        chengeCatalog()
+        return FilterGoodsData
+    }
+
+    const dispatch = useDispatch()
+    const chengeCatalog = () => {
+        dispatch({ type: "chengeCatalog" });
+    }
+
+
+
+    return (
         <div className="SideMenu">
             <div className="SideMenu__filter">
                 <h3 className="positions__subheader">
@@ -21,22 +107,22 @@ const SideMenu: FC = () => {
                 <div className="check__filter">
                     <h4 className="positions__subheader"> Производитель </h4>
                     <div className="inp__box">
-                        <p> Поиск...</p>
+                        <input type='text' placeholder="Поиск..." />
                         <div className="inp__icon">
                             <img src={SearchIcon} alt="Поиск" />
                         </div>
                     </div>
                     <div className="filter">
-                        <input type="checkbox" name="maker" id="maker1" />
-                        <label htmlFor="maker1">maker 1</label>
+                        <input type="checkbox" name="maker" id='Россия' />
+                        <label htmlFor='Россия' onClick={RusCheck}>Россия</label>
                     </div>
                     <div className="filter">
-                        <input type="checkbox" name="maker" id="maker2" />
-                        <label htmlFor="maker2">maker 2</label>
+                        <input type="checkbox" name="maker" id='Франция' />
+                        <label htmlFor='Франция' onClick={FrCheck}>Франция</label>
                     </div>
                     <div className="filter">
-                        <input type="checkbox" name="maker" id="maker3" />
-                        <label htmlFor="maker3">maker 3</label>
+                        <input type="checkbox" name="maker" id='Южная Корея' />
+                        <label htmlFor='Южная Корея' onClick={KorCheck}>Южная Корея</label>
                     </div>
                     <div className='more'>Показать все</div>
                 </div>
@@ -49,24 +135,24 @@ const SideMenu: FC = () => {
                         </div>
                     </div>
                     <div className="filter">
-                        <input type="checkbox" name="maker" id="brend1" />
+                        <input type="checkbox" name="brend" id="brend1" />
                         <label htmlFor="brend1">brend 1</label>
                     </div>
                     <div className="filter">
-                        <input type="checkbox" name="maker" id="brend2" />
+                        <input type="checkbox" name="brend" id="brend2" />
                         <label htmlFor="brend2">brend 2</label>
                     </div>
                     <div className="filter">
-                        <input type="checkbox" name="maker" id="brend3" />
+                        <input type="checkbox" name="brend" id="brend3" />
                         <label htmlFor="brend3">brend 3</label>
                     </div>
                     <div className='more'>Показать все</div>
                 </div>
                 <div className="SideMenu__btns">
-                    <div className="btn">
+                    <div className="btn" onClick={Filter}>
                         <p>Показать</p>
                     </div>
-                    <div className="btn__del">
+                    <div className="btn__del" onClick={DelFilter}>
                         <img src={Del} alt="удаление" />
                     </div>
                 </div>

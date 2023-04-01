@@ -1,43 +1,28 @@
 import React, { FC } from 'react';
-import GoodsData from '../GoodsData.json'
-import CartImg from '../assets/to cart icon.svg'
 import SideMenu from './SideMenu';
+import GoodsItem from './GoodsItem';
+import { showType } from './type';
+import { useSelector } from 'react-redux';
 
 
 
 
 const Catalog: FC = () => {
+    const chengeCatalog: any = useSelector<showType>(state => state.chengeCatalog)
+    console.log(chengeCatalog)
+
+
+    const CatatlodShow = useSelector<showType>(state => state.CatatlodShow)
+    console.log(CatatlodShow)
+    const ShowClass = CatatlodShow ? 'show' : 'hide'
     return (
-        <div className='Catalog'>
+        <div className={`Catalog ${ShowClass}`}>
             <SideMenu />
             <div className="Page__goods">
                 <div className='Goods'>
-                    {
-                        GoodsData.map(goods => {
-                            return (
-                                <div className='Good__position' key={goods.id} >
-                                    <img className='good__img' src={goods.img} alt={goods.name} />
-                                    <div className="good__size">
-                                        <p>{goods.sizeName}</p>
-                                        <p>{goods.sizeValue}</p>
-                                    </div>
-                                    <p className='good__name'> {goods.name}</p>
-                                    <div className="good__info">
-                                        <p> Штрихкод: {goods.id}</p>
-                                        <p> Производитель: {goods.maker}</p>
-                                        <p> Бренд: {goods.brend}</p>
-                                    </div>
-                                    <div className="good__price">
-                                        <p> {goods.price} ₽</p>
-                                        <button className="toCart__btn">
-                                            в корзину
-                                            <img src={CartImg} alt="Корзина" />
-                                        </button>
-                                    </div>
-                                </div>
-                            )
-                        })
-                    }
+                    {chengeCatalog.map(goods => (
+                        <GoodsItem goods={goods} key={goods.id} />
+                    ))}
 
                 </div>
                 <div className="Page__num">
@@ -50,8 +35,8 @@ const Catalog: FC = () => {
                 <p className="Page__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam interdum ut justo, vestibulum sagittis iaculis iaculis. Quis mattis vulputate feugiat massa vestibulum duis. Faucibus consectetur aliquet sed pellentesque consequat consectetur congue mauris venenatis. Nunc elit, dignissim sed nulla ullamcorper enim, malesuada.</p>
             </div >
         </div>
-
     );
+
 };
 
 export default Catalog;

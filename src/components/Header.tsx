@@ -9,19 +9,24 @@ import LogoImgA from '../assets/logo a.svg'
 import LogoImgN from '../assets/logo n.svg'
 import btnImg from '../assets/btn icon.png'
 import btnImgBlack from '../assets/btn icon black.png'
-
-import SearchIcon from '../assets/saerch icon.svg'
 import SearchIconBlack from '../assets/search icon black.svg'
 
 import CallImg from '../assets/call img.png'
 import PriceImg from '../assets/price-list.svg'
 import BurgMenu from '../assets/burgerMenu.svg'
 import Cart from './Cart';
+import { useDispatch } from 'react-redux';
+import Search from './Search';
 
 
 
 
 const Header: FC = () => {
+    
+    const dispatch = useDispatch()
+    const ShowCatalogBtn = () => {
+        dispatch({type: "CatatlodShow"});
+    }  
     return (
         <div className='Header'>
             <div className='Header__Up'>
@@ -46,7 +51,7 @@ const Header: FC = () => {
                     <div className="btn__menu">
                         <img src={BurgMenu} alt="Меню" />
                     </div>
-                    <div className="logo__box">
+                    <div className="logo__box" onClick={ShowCatalogBtn}>
                         <img className='logo' src={LogoImg} alt='логотип'></img>
                         <img className='logo1' src={LogoImg1} alt='логотип'></img>
                         <img className='logo2' src={LogoImg1} alt='логотип'></img>
@@ -64,12 +69,7 @@ const Header: FC = () => {
                         <img src={btnImg} alt="" />
 
                     </div>
-                    <div className="inp__box">
-                        <p> Поиск...</p>
-                        <div className="inp__icon">
-                            <img src={SearchIcon} alt="Поиск" />
-                        </div>
-                    </div>
+                    <Search/>
                     <div className="Header__call">
                         <div className="call__text">
                             <p className='tel'>+7 (777) 490-00-91</p>

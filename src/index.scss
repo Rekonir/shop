@@ -99,6 +99,7 @@ h3.positions__subheader {
 
 // Разметка страницы //
 .Header {
+    min-width: 100vw;
     width: 100%;
     height: 170px;
     display: flex;
@@ -231,15 +232,8 @@ h3.positions__subheader {
             flex-direction: row;
             font-weight: 500;
             font-size: 16px;
-            a {
-                text-decoration: none;
-                color: #3f4e65;
-            }
-            a::after {
-                content: "▼";
-                width: 5px;
-                height: 5px;
-                margin-left: 5px;
+            .sort__select {
+                border-width: 0px
             }
         }
     }
@@ -297,12 +291,19 @@ h3.positions__subheader {
                 flex-direction: column;
                 gap: 15px;
                 .filter {
+                    width: 100%;
+                    position: relative;
                     display: flex;
-                    justify-content: center;
-                    align-items: start;
+                    justify-content: start;
+                    align-items: baseline;
                     flex-direction: row;
-                    gap: 10px;
                     label {
+                        position: absolute;
+                        z-index: 1;
+                        width: 100%;
+                        top: 0;
+                        left: 0;
+                        padding-left: 20px;
                         font-weight: 400;
                         font-size: 14px;
                         line-height: 90%;
@@ -531,7 +532,7 @@ h3.positions__subheader {
 .CartPage {
     width: 100%;
     padding: 0 280px;
-    display: none; /////////////////////////////////////
+    display: flex; /////////////////////////////////////
     justify-content: start;
     align-items: start;
     flex-direction: column;
@@ -591,9 +592,10 @@ h3.positions__subheader {
     width: 100vw;
     height: 100vh;
     background: rgba(black, 0.5);
-    display: none; //////////////////////////
+    display: flex; //////////////////////////
     justify-content: center;
     align-items: center;
+    cursor: pointer;
     .Thanks__box {
         position: relative;
         width: 735px;
@@ -680,6 +682,12 @@ h3.positions__subheader {
 }
 
 // Универсальные блоки //
+.show {
+    display: flex;
+}
+.hide {
+    display: none;
+}
 .map__nav {
     width: 100%;
     margin-bottom: 25px;
@@ -709,7 +717,7 @@ h3.positions__subheader {
     }
 }
 .inp__box {
-    width: 250px;
+    width: 270px;
     height: 60px;
     display: flex;
     flex-direction: row;
@@ -717,9 +725,23 @@ h3.positions__subheader {
     align-items: center;
     background: #ededed;
     border-radius: 36px;
-    padding: 20px;
     color: #5c6370;
+    padding-right: 20px;
+    input {
+        width: 210px;
+        height: 60px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        background: #ededed;
+        border-radius: 36px;
+        padding: 20px;
+        color: #5c6370;
+        border: none;
+    }
     p {
+        margin: 20px;
         font-size: 12px;
         opacity: 0.6;
     }
@@ -731,6 +753,7 @@ h3.positions__subheader {
         display: flex;
         justify-content: center;
         align-items: center;
+        cursor: pointer;
     }
 }
 .logo__box {
@@ -739,6 +762,7 @@ h3.positions__subheader {
     align-items: center;
     gap: 7px;
     position: relative;
+    cursor: pointer;
     img.logo {
         width: 49px;
         height: 66px;
@@ -777,6 +801,7 @@ h3.positions__subheader {
     justify-content: center;
     align-items: center;
     gap: 12px;
+    cursor: pointer;
     p {
         color: white;
         font-weight: 700;
@@ -863,10 +888,12 @@ h3.positions__subheader {
     justify-content: center;
     align-items: center;
     gap: 28px;
+    cursor: pointer;
     .Cart__img {
         position: relative;
         border: 0px solid black;
         background: white;
+        cursor: pointer;
         img {
             width: 40px;
             height: 29px;

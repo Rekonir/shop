@@ -1,10 +1,22 @@
 import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import TYImg from '../assets/TY.svg';
+import { showType } from './type';
 
 
 const Thanks = () => {
+    
+    const ThaksShow = useSelector<showType>(state => state.ThaksShow)
+    console.log(ThaksShow)
+    const ShowClass = ThaksShow ? 'show' : 'hide'
+    
+    const dispatch = useDispatch()
+    const ShowThxBtn = () => {
+        dispatch({type: "ThaksShow"});
+    }
+
     return (
-        <div className="Thanks">
+        <div className={`Thanks ${ShowClass}`} onClick={ShowThxBtn}>
             <div className="Thanks__box">
                 <button className="close"> X </button>
                 <img src={TYImg} alt="Спасибо" />
