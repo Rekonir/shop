@@ -452,6 +452,7 @@ h3.positions__subheader {
                 }
             }
             .page__arrow {
+                border: none;
                 color: #ffc85e;
                 width: 9px;
                 height: 16px;
@@ -746,6 +747,7 @@ h3.positions__subheader {
         padding: 20px;
         color: #5c6370;
         border: none;
+        margin-left: -20px;
     }
     p {
         margin: 20px;
@@ -797,7 +799,8 @@ h3.positions__subheader {
 }
 .btn,
 .btn:active,
-.btn:hover .btn__del {
+.btn:hover,
+.btn__del {
     text-decoration: none;
     box-sizing: border-box;
     width: 200px;

@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { showType } from './type';
 import Quantity from './Quantity';
 import { Link } from 'react-router-dom';
+import { removeFromCart } from '../store/cart/action';
 
 
 
@@ -19,6 +20,9 @@ const CartPage: FC = () => {
     const ShowThxBtn = () => {
         dispatch({ type: "ThaksShow" });
     }
+    const removeHandler = (id: string) => {
+		dispatch(removeFromCart(id))
+	}
 
     return (
         <div className={`CartPage ${ShowClass}`}>
@@ -43,7 +47,7 @@ const CartPage: FC = () => {
                         </div>
                         <Quantity good={goods} key={`Counter ${goods.id}`}/>
                         <h2 className="price">{goods.price} ₽</h2>
-                        <div className="btn__del">
+                        <div className="btn__del" onClick={() => removeHandler(goods.id)}>
                             <img src={Del} alt="удаление" />
                         </div>
                     </div>

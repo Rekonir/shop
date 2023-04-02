@@ -454,6 +454,7 @@ h3.positions__subheader {
   cursor: pointer;
 }
 .Catalog .Page__goods .page__box .page__arrow {
+  border: none;
   color: #ffc85e;
   width: 9px;
   height: 16px;
@@ -749,6 +750,7 @@ h3.positions__subheader {
   padding: 20px;
   color: #5c6370;
   border: none;
+  margin-left: -20px;
 }
 .inp__box p {
   margin: 20px;
@@ -801,7 +803,8 @@ h3.positions__subheader {
 
 .btn,
 .btn:active,
-.btn:hover .btn__del {
+.btn:hover,
+.btn__del {
   text-decoration: none;
   box-sizing: border-box;
   width: 200px;
@@ -818,7 +821,8 @@ h3.positions__subheader {
 }
 .btn p,
 .btn:active p,
-.btn:hover .btn__del p {
+.btn:hover p,
+.btn__del p {
   text-decoration: none;
   color: white;
   font-weight: 700;
@@ -826,7 +830,8 @@ h3.positions__subheader {
 }
 .btn img,
 .btn:active img,
-.btn:hover .btn__del img {
+.btn:hover img,
+.btn__del img {
   width: 15px !important;
   height: 15px !important;
 }

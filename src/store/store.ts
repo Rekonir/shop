@@ -22,7 +22,7 @@ export const ShowReduser = (state = defShow, action: any) => {
         case "CatatlodShow":
             return { ...state, CatatlodShow: true, CartShow: true, GoodsPageShow: true, UpFilterShow: true }
         case "ThaksShow":
-            return { ...state, ThaksShow: !state.ThaksShow,  CartPool: [], chengeCatalog:GoodsData, UpFilterShow: true}
+            return { ...state, ThaksShow: !state.ThaksShow, CartPool: [], chengeCatalog: GoodsData, UpFilterShow: true }
         case "GoodsPageShow":
             return { ...state, GoodsPageShow: true, CartShow: true, CatatlodShow: true, UpFilterShow: false, GoodsPageId: action.payload }
 
@@ -64,6 +64,9 @@ export const ShowReduser = (state = defShow, action: any) => {
             console.log(cart.CartPool)
             return { ...state, CartPool: cart.CartPool }
         }
+        case "delFormCart":{
+			return {...state, CartPool: state.CartPool.filter(item => item.id !== action.payload)}
+		}
 
         default:
             return state
