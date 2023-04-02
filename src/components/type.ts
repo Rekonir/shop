@@ -1,3 +1,5 @@
+import { Dispatch, SetStateAction } from "react"
+
 export interface IGoods {
     id: string,
     img: string,
@@ -16,9 +18,12 @@ export interface IGoodsItem {
     onChangeCatalog?: any
 }
 export interface ICartItem extends IGoods {
-    count: number
+    counter: number
 }
 export type showType = {
+    UpFilterShow?:boolean,
+    GoodsPageShow?: boolean,
+    GoodsPageId?: string,
     CartShow?: boolean,
     CatatlodShow?: boolean,
     ThaksShow?: boolean,
@@ -26,10 +31,22 @@ export type showType = {
     CartPool?: Array<IGoods>
 
 }
-
 export type checkedState = {
 
     RusChecked?: boolean,
     KorChecked?: boolean,
     FrChecked?: boolean,
+}
+export interface IQuantity {
+	// counter: number
+	setCount?: TypeSetState<number>
+    key:string
+    good:IGoods
+}
+export type TypeSetState<T> = Dispatch<SetStateAction<T>>
+
+export interface IPagination {
+    goodsPerPage:number,
+    totalGoods:number,
+    paginate:any
 }

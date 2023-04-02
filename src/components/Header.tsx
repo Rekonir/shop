@@ -17,16 +17,17 @@ import BurgMenu from '../assets/burgerMenu.svg'
 import Cart from './Cart';
 import { useDispatch } from 'react-redux';
 import Search from './Search';
+import { Link } from 'react-router-dom';
 
 
 
 
 const Header: FC = () => {
-    
+
     const dispatch = useDispatch()
     const ShowCatalogBtn = () => {
-        dispatch({type: "CatatlodShow"});
-    }  
+        dispatch({ type: "CatatlodShow" });
+    }
     return (
         <div className='Header'>
             <div className='Header__Up'>
@@ -51,7 +52,7 @@ const Header: FC = () => {
                     <div className="btn__menu">
                         <img src={BurgMenu} alt="Меню" />
                     </div>
-                    <div className="logo__box" onClick={ShowCatalogBtn}>
+                    <Link to='/'className="logo__box" onClick={ShowCatalogBtn}>
                         <img className='logo' src={LogoImg} alt='логотип'></img>
                         <img className='logo1' src={LogoImg1} alt='логотип'></img>
                         <img className='logo2' src={LogoImg1} alt='логотип'></img>
@@ -63,13 +64,13 @@ const Header: FC = () => {
                             <img className='logo' src={LogoImgA} alt='логотип'></img>
                             <img className='logo' src={LogoImgN} alt='логотип'></img>
                         </div>
-                    </div>
+                    </Link>
                     <div className="btn">
                         <p>Каталог</p>
                         <img src={btnImg} alt="" />
 
                     </div>
-                    <Search/>
+                    <Search />
                     <div className="Header__call">
                         <div className="call__text">
                             <p className='tel'>+7 (777) 490-00-91</p>

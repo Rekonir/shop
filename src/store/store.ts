@@ -5,6 +5,9 @@ import GoodsData from '../GoodsData.json'
 
 
 const defShow: showType = {
+    UpFilterShow: true,
+    GoodsPageShow: false,
+    GoodsPageId: "1",
     CartShow: false,
     CatatlodShow: true,
     ThaksShow: false,
@@ -15,11 +18,14 @@ const defShow: showType = {
 export const ShowReduser = (state = defShow, action: any) => {
     switch (action.type) {
         case "CartShow":
-            return { ...state, CartShow: !state.CartShow, CatatlodShow: !state.CatatlodShow }
+            return { ...state, CartShow: true, CatatlodShow: true, GoodsPageShow: true, UpFilterShow: false }
         case "CatatlodShow":
-            return { ...state, CatatlodShow: !state.CatatlodShow, CartShow: !state.CartShow, }
+            return { ...state, CatatlodShow: true, CartShow: true, GoodsPageShow: true, UpFilterShow: true }
         case "ThaksShow":
-            return { ...state, ThaksShow: !state.ThaksShow, }
+            return { ...state, ThaksShow: !state.ThaksShow,  CartPool: [], chengeCatalog:GoodsData, UpFilterShow: true}
+        case "GoodsPageShow":
+            return { ...state, GoodsPageShow: true, CartShow: true, CatatlodShow: true, UpFilterShow: false, GoodsPageId: action.payload }
+
         case "chengeCatalog":
             return { ...state, chengeCatalog: state.chengeCatalog = FilterGoodsData, }
         case "SotrNameUp":
@@ -41,15 +47,12 @@ export const ShowReduser = (state = defShow, action: any) => {
         case "SotrPriceUp":
             const sortUPtice = state.chengeCatalog.sort((a, b) => a.price - b.price);
             console.log(sortUPtice)
-            return { ...state, chengeCatalog: sortUPtice}
+            return { ...state, chengeCatalog: sortUPtice }
 
         case "addToCart": {
-
             const cart = { ...state }
             const { counter, goods } = action.payload
-
             const foundProduct = cart.CartPool.find(item => item.id === goods.id)
-
             if (foundProduct) {
                 foundProduct.counter = foundProduct.counter + 1
             } else {

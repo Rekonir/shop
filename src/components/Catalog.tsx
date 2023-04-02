@@ -1,8 +1,9 @@
-import React, { FC } from 'react';
+import React, { FC, useState } from 'react';
 import SideMenu from './SideMenu';
 import GoodsItem from './GoodsItem';
 import { showType } from './type';
 import { useSelector } from 'react-redux';
+import Pagination from './Pagination';
 
 
 
@@ -10,26 +11,41 @@ import { useSelector } from 'react-redux';
 const Catalog: FC = () => {
     const chengeCatalog: any = useSelector<showType>(state => state.chengeCatalog)
 
-
     const CatatlodShow = useSelector<showType>(state => state.CatatlodShow)
     const ShowClass = CatatlodShow ? 'show' : 'hide'
+
+    const [currentPage, setCurrentPage] = useState(1)
+    const [goodsPerPage] = useState(10)
+
+    const lastGoodsUndex = currentPage * goodsPerPage
+    const firstGoodsUndex = lastGoodsUndex - goodsPerPage
+    const currentGoods = chengeCatalog.slice(firstGoodsUndex, lastGoodsUndex)
+    const maxPage = Math.ceil(chengeCatalog.length / goodsPerPage)
+    const paginate = (pageNum) => {
+        setCurrentPage(pageNum)
+    }
+    const nextPage = () => {
+        setCurrentPage(prev => prev < maxPage ? prev + 1 : prev)
+    }
+    const lastPage = () => {
+        setCurrentPage(prev => prev < 2? 1 : prev - 1)
+    }
     return (
         <div className={`Catalog ${ShowClass}`}>
             <SideMenu />
             <div className="Page__goods">
                 <div className='Goods'>
-                    {chengeCatalog.map(goods => (
+                    {currentGoods.map(goods => (
                         <GoodsItem goods={goods} key={goods.id} />
                     ))}
 
                 </div>
-                <div className="Page__num">
-                    <div className="Page__active"> 1 </div>
-                    <div className="Page__unactive"> 2 </div>
-                    <div className="Page__unactive"> 3 </div>
-                    <div className="Page__unactive"> 4 </div>
-                    <div className="Page__unactive"> 5 </div>
+                <div className="page__box">
+                    <button className="page__arrow" onClick={lastPage}> {'<'} </button>
+                    <Pagination goodsPerPage={goodsPerPage} totalGoods={chengeCatalog.length} paginate={paginate} />
+                    <button className="page__arrow" onClick={nextPage}> {'>'} </button>
                 </div>
+
                 <p className="Page__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam interdum ut justo, vestibulum sagittis
                     iaculis iaculis. Quis mattis vulputate feugiat massa vestibulum duis. Faucibus consectetur aliquet sed pellentesque consequat consectetur
                     congue mauris venenatis. Nunc elit, dignissim sed nulla ullamcorper enim, malesuada.

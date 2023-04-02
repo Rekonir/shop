@@ -16,9 +16,9 @@ const UpFilter: FC = () => {
         if (Sort.options.selectedIndex === 2) { dispatch({ type: "SotrPriceUp" }); console.log(Sort.options.selectedIndex) }
         if (Sort.options.selectedIndex === 3) { dispatch({ type: "SotrPriceDown" }); console.log(Sort.options.selectedIndex) }
     }
-    const CatatlodShow = useSelector<showType>(state => state.CatatlodShow)
-    console.log(CatatlodShow)
-    const ShowClass = CatatlodShow ? 'show' : 'hide'
+    const UpFilterShow = useSelector<showType>(state => state.UpFilterShow)
+    console.log(UpFilterShow)
+    const ShowClass = UpFilterShow ? 'show' : 'hide'
 
     return (
         <div className={`UpFilter ${ShowClass}`}>

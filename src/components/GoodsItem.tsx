@@ -3,6 +3,7 @@ import { IGoodsItem } from './type';
 import CartImg from '../assets/to cart icon.svg'
 import { useDispatch } from 'react-redux';
 import { addToCart } from '../store/cart/action';
+import { Link } from 'react-router-dom';
 
 const GoodsItem: FC<IGoodsItem> = ({ goods }) => {
     
@@ -11,6 +12,12 @@ const GoodsItem: FC<IGoodsItem> = ({ goods }) => {
         const counter = 1
 		dispatch(addToCart(goods, counter))
     }
+    const GoodsPageShow = ()=>{
+        dispatch({type: "GoodsPageShow", payload: goods.id})
+        
+        console.log(goods.id)
+    }
+    
     return (
         <div className='Good__position' key={goods.id} >
             <img className='good__img' src={goods.img} alt={goods.name} />
@@ -18,7 +25,7 @@ const GoodsItem: FC<IGoodsItem> = ({ goods }) => {
                 <p>{goods.sizeName}</p>
                 <p>{goods.sizeValue}</p>
             </div>
-            <p className='good__name'> {goods.name}</p>
+            <Link className='good__name' to={`/${goods.id}`} onClick={GoodsPageShow}> {goods.name}</Link>
             <div className="good__info">
                 <p> Штрихкод: {goods.id}</p>
                 <p> Производитель: {goods.maker}</p>

@@ -53,11 +53,15 @@ p.phone {
     padding: 0;
 }
 
-p.good__name {
+.good__name,
+.good__name:active,
+.good__name:hover {
+    text-decoration: none;
     width: 100%;
     font-size: 16px;
     font-weight: 700;
     margin-bottom: 5px;
+    color: #000;
     cursor: pointer;
 }
 p.thanks__text {
@@ -213,7 +217,7 @@ h3.positions__subheader {
     padding: 0 280px;
     display: flex; //////////////////////////////////////////////
     justify-content: space-between;
-    align-items: center;
+    align-items: start;
     flex-direction: column;
     gap: 25px;
     margin-bottom: 50px;
@@ -233,7 +237,7 @@ h3.positions__subheader {
             font-weight: 500;
             font-size: 16px;
             .sort__select {
-                border-width: 0px
+                border-width: 0px;
             }
         }
     }
@@ -415,50 +419,52 @@ h3.positions__subheader {
                 }
             }
         }
-        .Page__num {
+        .page__box {
             display: flex;
-            justify-content: space-between;
-            align-items: center;
             flex-direction: row;
-            gap: 20px;
-            font-weight: 500;
-            font-size: 14px;
-            line-height: 130%;
-            text-align: center;
-            color: #3f4e65;
-            margin-bottom: 20px;
+            gap: 35px;
+            align-items: baseline;
+            justify-content: center;
 
-            .Page__active {
+            .Page__num {
                 display: flex;
-                justify-content: center;
+                justify-content: space-between;
                 align-items: center;
-                width: 35px;
-                height: 35px;
-                border-radius: 50%;
-                background: linear-gradient(90deg, rgba(255, 198, 80, 0.3) 0%, rgba(254, 202, 110, 0.3) 97.25%);
-                margin: -10px;
+                flex-direction: row;
+                gap: 20px;
+                font-weight: 500;
+                font-size: 14px;
+                line-height: 130%;
+                text-align: center;
+                color: #3f4e65;
+                margin-bottom: 20px;
+                cursor: pointer;
+
+                .Page__active {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    width: 35px;
+                    height: 35px;
+                    border-radius: 50%;
+                    background: linear-gradient(90deg, rgba(255, 198, 80, 0.3) 0%, rgba(254, 202, 110, 0.3) 97.25%);
+                    margin: -10px;
+                    cursor: pointer;
+                }
             }
-        }
-        .Page__num::after {
-            content: ">";
-            color: #ffc85e;
-            margin-left: 35px;
-            width: 9px;
-            height: 16px;
-        }
-        .Page__num::before {
-            content: "<";
-            color: #ffc85e;
-            margin-right: 35px;
-            width: 9px;
-            height: 16px;
+            .page__arrow {
+                color: #ffc85e;
+                width: 9px;
+                height: 16px;
+                cursor: pointer;
+            }
         }
     }
 }
 .GoodsPage {
     width: 100%;
     margin: 0 0 60px 0;
-    display: none; //////////////////////////////
+    display: flex; //////////////////////////////
     justify-content: start;
     align-items: start;
     flex-direction: column;
@@ -584,7 +590,9 @@ h3.positions__subheader {
     }
 }
 .Thanks {
+    text-decoration: none;
     position: fixed;
+    color: black;
     top: 0;
     right: 0;
     bottom: 0;
@@ -726,7 +734,7 @@ h3.positions__subheader {
     background: #ededed;
     border-radius: 36px;
     color: #5c6370;
-    padding-right: 20px;
+    padding: 0 20px;
     input {
         width: 210px;
         height: 60px;
@@ -789,7 +797,9 @@ h3.positions__subheader {
     }
 }
 .btn,
-.btn__del {
+.btn:active,
+.btn:hover .btn__del {
+    text-decoration: none;
     box-sizing: border-box;
     width: 200px;
     height: 60px;
@@ -803,6 +813,7 @@ h3.positions__subheader {
     gap: 12px;
     cursor: pointer;
     p {
+        text-decoration: none;
         color: white;
         font-weight: 700;
 
@@ -862,6 +873,7 @@ h3.positions__subheader {
     flex-direction: column;
 }
 .count {
+    text-align: center;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -874,6 +886,7 @@ h3.positions__subheader {
         background: linear-gradient(90deg, rgba(255, 198, 80, 0.3) 0%, rgba(254, 202, 110, 0.3) 97.25%);
         border-radius: 100%;
         border: none;
+        cursor: pointer;
     }
     .count__value {
         text-align: center;
@@ -883,10 +896,14 @@ h3.positions__subheader {
         border: none;
     }
 }
-.Cart__box {
+.Cart__box,
+.Cart__box:active,
+.Cart__box:hover {
+    text-decoration: none;
     display: flex;
     justify-content: center;
     align-items: center;
+    color: black;
     gap: 28px;
     cursor: pointer;
     .Cart__img {
@@ -1080,7 +1097,6 @@ h3.positions__subheader {
                 top: 580px;
                 left: 15px;
                 display: flex; /////////////////////////////////
-                
             }
         }
         ul.Filter__list {

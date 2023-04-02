@@ -55,11 +55,15 @@ p.phone {
   padding: 0;
 }
 
-p.good__name {
+.good__name,
+.good__name:active,
+.good__name:hover {
+  text-decoration: none;
   width: 100%;
   font-size: 16px;
   font-weight: 700;
   margin-bottom: 5px;
+  color: #000;
   cursor: pointer;
 }
 
@@ -216,7 +220,7 @@ h3.positions__subheader {
   padding: 0 280px;
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: start;
   flex-direction: column;
   gap: 25px;
   margin-bottom: 50px;
@@ -418,7 +422,14 @@ h3.positions__subheader {
   font-weight: 800;
   font-size: 16px;
 }
-.Catalog .Page__goods .Page__num {
+.Catalog .Page__goods .page__box {
+  display: flex;
+  flex-direction: row;
+  gap: 35px;
+  align-items: baseline;
+  justify-content: center;
+}
+.Catalog .Page__goods .page__box .Page__num {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -430,8 +441,9 @@ h3.positions__subheader {
   text-align: center;
   color: #3f4e65;
   margin-bottom: 20px;
+  cursor: pointer;
 }
-.Catalog .Page__goods .Page__num .Page__active {
+.Catalog .Page__goods .page__box .Page__num .Page__active {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -440,26 +452,19 @@ h3.positions__subheader {
   border-radius: 50%;
   background: linear-gradient(90deg, rgba(255, 198, 80, 0.3) 0%, rgba(254, 202, 110, 0.3) 97.25%);
   margin: -10px;
+  cursor: pointer;
 }
-.Catalog .Page__goods .Page__num::after {
-  content: ">";
+.Catalog .Page__goods .page__box .page__arrow {
   color: #ffc85e;
-  margin-left: 35px;
   width: 9px;
   height: 16px;
-}
-.Catalog .Page__goods .Page__num::before {
-  content: "<";
-  color: #ffc85e;
-  margin-right: 35px;
-  width: 9px;
-  height: 16px;
+  cursor: pointer;
 }
 
 .GoodsPage {
   width: 100%;
   margin: 0 0 60px 0;
-  display: none;
+  display: flex;
   justify-content: start;
   align-items: start;
   flex-direction: column;
@@ -586,7 +591,9 @@ h3.positions__subheader {
 }
 
 .Thanks {
+  text-decoration: none;
   position: fixed;
+  color: black;
   top: 0;
   right: 0;
   bottom: 0;
@@ -729,7 +736,7 @@ h3.positions__subheader {
   background: #ededed;
   border-radius: 36px;
   color: #5c6370;
-  padding-right: 20px;
+  padding: 0 20px;
 }
 .inp__box input {
   width: 210px;
@@ -794,7 +801,9 @@ h3.positions__subheader {
 }
 
 .btn,
-.btn__del {
+.btn:active,
+.btn:hover .btn__del {
+  text-decoration: none;
   box-sizing: border-box;
   width: 200px;
   height: 60px;
@@ -809,13 +818,16 @@ h3.positions__subheader {
   cursor: pointer;
 }
 .btn p,
-.btn__del p {
+.btn:active p,
+.btn:hover .btn__del p {
+  text-decoration: none;
   color: white;
   font-weight: 700;
   line-height: 17px;
 }
 .btn img,
-.btn__del img {
+.btn:active img,
+.btn:hover .btn__del img {
   width: 15px !important;
   height: 15px !important;
 }
@@ -874,6 +886,7 @@ h3.positions__subheader {
 }
 
 .count {
+  text-align: center;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -887,6 +900,7 @@ h3.positions__subheader {
   background: linear-gradient(90deg, rgba(255, 198, 80, 0.3) 0%, rgba(254, 202, 110, 0.3) 97.25%);
   border-radius: 100%;
   border: none;
+  cursor: pointer;
 }
 .count .count__value {
   text-align: center;
@@ -896,24 +910,34 @@ h3.positions__subheader {
   border: none;
 }
 
-.Cart__box {
+.Cart__box,
+.Cart__box:active,
+.Cart__box:hover {
+  text-decoration: none;
   display: flex;
   justify-content: center;
   align-items: center;
+  color: black;
   gap: 28px;
   cursor: pointer;
 }
-.Cart__box .Cart__img {
+.Cart__box .Cart__img,
+.Cart__box:active .Cart__img,
+.Cart__box:hover .Cart__img {
   position: relative;
   border: 0px solid black;
   background: white;
   cursor: pointer;
 }
-.Cart__box .Cart__img img {
+.Cart__box .Cart__img img,
+.Cart__box:active .Cart__img img,
+.Cart__box:hover .Cart__img img {
   width: 40px;
   height: 29px;
 }
-.Cart__box .Cart__img .sum__position {
+.Cart__box .Cart__img .sum__position,
+.Cart__box:active .Cart__img .sum__position,
+.Cart__box:hover .Cart__img .sum__position {
   position: absolute;
   width: 22px;
   height: 22px;
