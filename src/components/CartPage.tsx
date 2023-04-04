@@ -9,6 +9,7 @@ import { removeFromCart } from '../store/cart/action';
 
 
 const CartPage: FC = () => {
+    const inCart= true
 
     const CartShow = useSelector<showType>(state => state.CartShow)
     const ShowClass = CartShow ? 'show' : 'hide'
@@ -21,8 +22,9 @@ const CartPage: FC = () => {
         dispatch({ type: "ThaksShow" });
     }
     const removeHandler = (id: string) => {
-		dispatch(removeFromCart(id))
-	}
+        dispatch(removeFromCart(id))
+    }
+
 
     return (
         <div className={`CartPage ${ShowClass}`}>
@@ -33,7 +35,11 @@ const CartPage: FC = () => {
                 </ul>
             </div>
             <h1 className="Page__header">Корзина</h1>
+
             {CartData.map(goods => {
+                const OpenGood = () => {
+                    dispatch({ type: 'GoodsPageShow', payload: goods.id })
+                }
                 return (
                     <div className="Cart__position" key={goods.id}>
                         <img src={goods.img} alt={goods.name} />
@@ -42,10 +48,10 @@ const CartPage: FC = () => {
                                 <p>{goods.sizeName}</p>
                                 <p>{goods.sizeValue}</p>
                             </div>
-                            <Link className='good__name' to={`/${goods.id}`}> {goods.name}</Link>
+                            <Link className='good__name' to={`/${goods.id}`} onClick={OpenGood}> {goods.name}</Link>
                             <p className='description'>{goods.description}</p>
                         </div>
-                        <Quantity good={goods} key={`Counter ${goods.id}`}/>
+                        <Quantity goods={goods} key={`Counter ${goods.id}`} cartstate={inCart} />
                         <h2 className="price">{goods.price} ₽</h2>
                         <div className="btn__del" onClick={() => removeHandler(goods.id)}>
                             <img src={Del} alt="удаление" />

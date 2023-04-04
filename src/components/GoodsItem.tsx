@@ -8,9 +8,9 @@ import { Link } from 'react-router-dom';
 const GoodsItem: FC<IGoodsItem> = ({ goods }) => {
     
     const dispatch = useDispatch()
+    
     const addHandler = () => {
-        const counter = 1
-		dispatch(addToCart(goods, counter))
+        dispatch(addToCart(goods, goods.counter))
     }
     const GoodsPageShow = ()=>{
         dispatch({type: "GoodsPageShow", payload: goods.id})

@@ -1,24 +1,38 @@
 import React, { FC, useState } from 'react';
-import { IQuantity } from './type';
+import { IQuantity, } from './type';
+import { useDispatch, } from 'react-redux';
 
-const Quantity: FC<IQuantity> = ({good}) => {
-    
-    const [counter, setCount] = useState(good.counter)
 
-    console.log(counter)
-    
+
+const Quantity: FC<IQuantity> = ({ goods, cartstate }) => {
+
+    const [counter, setCount] = useState(goods.counter)
+
+    const dispatch = useDispatch()
+    const changeCounterDown = () => {
+            counter > 0 && setCount(counter - 1)
+            let newCounter = counter - 1
+            dispatch({ type: "changeCounter", payload: { goods, newCounter,cartstate } })
+
+    }
+    const changeCounterUp = () => {
+            counter < 300 && setCount(counter + 1)
+            let newCounter = counter + 1
+            dispatch({ type: "changeCounter", payload: { goods, newCounter,cartstate } })
+    }
     return (
-        <div className="count">
-            <button className="count__change" onClick={() => counter > 0 && setCount(counter - 1)}> - </button>
+        <div className="count" >
+            <button className="count__change" onClick={changeCounterDown}   > - </button>
             <input
-                type='number' className="count__value" onChange={e => setCount(+e.target.value)}
-                value={counter|| 0} readOnly id={good.id} name={good.id} />
-            <button className="count__change" onClick={() => counter < 300 && setCount(counter + 1)}> + </button>
+                type='number' className="count__value" onChange={e => { setCount(+e.target.value) }}
+                value={counter} disabled />
+            <button className="count__change" onClick={changeCounterUp}> + </button>
         </div>
 
 
     );
 };
+
 
 
 export default Quantity;

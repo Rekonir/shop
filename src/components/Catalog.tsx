@@ -42,7 +42,7 @@ const Catalog: FC = () => {
                 </div>
                 <div className="page__box">
                     <button className="page__arrow" onClick={lastPage}> {'<'} </button>
-                    <Pagination goodsPerPage={goodsPerPage} totalGoods={chengeCatalog.length} paginate={paginate} />
+                    <Pagination goodsPerPage={goodsPerPage} totalGoods={chengeCatalog.length} currentPage={currentPage} paginate={paginate} />
                     <button className="page__arrow" onClick={nextPage}> {'>'} </button>
                 </div>
 

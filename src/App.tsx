@@ -19,7 +19,7 @@ const App: FC = () => {
       <Header />
       <UpFilter />
       <Routes>
-        <Route path='/' element={<Catalog />} />
+        <Route path='*' element={<Catalog />} />
         <Route path='/:id' element={<GoodsPage />} />
         <Route path='/cart' element={<CartPage />} />
       </Routes>

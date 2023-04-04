@@ -1,29 +1,27 @@
-import React, { FC, useState } from 'react';
+import React, { FC } from 'react';
 import PriceImg from '../assets/prise-list black.svg'
 import ActionImg from '../assets/actionImg.svg'
 import CartImg from '../assets/to cart icon.svg'
 import GoodsData from '../GoodsData.json'
 import Quantity from './Quantity';
 import { useDispatch, useSelector } from 'react-redux';
-import { addToCart } from '../store/cart/action';
 import { showType } from './type';
 
 
 const GoodsPage: FC = () => {
+    const inCart = false
 
-    const [counter, setCount] = useState(0)
     const dispatch = useDispatch()
-    const addHandler = () => {
-        dispatch(addToCart(goods, counter))
-    }
+   
     const GoodsPageId = useSelector<showType>(state => state.GoodsPageId)
     let goods = GoodsData.find(item => item.id === GoodsPageId)
+
+    const addToCartPageGoods = () => {
+		dispatch({type: 'addToCartPageGoods', payload: goods})
+    }
     const GoodsPageShow = useSelector<showType>(state => state.GoodsPageShow)
     const ShowClass = GoodsPageShow ? 'show' : 'hide'
     return (
-        // <div >
-        //     {GoodsData.map(goods => {
-        //         return (
         <div className={`GoodsPage ${ShowClass}`} key={goods.id} >
             <div className="map__nav">
                 <ul>
@@ -43,9 +41,8 @@ const GoodsPage: FC = () => {
                     </div>
                     <div className="content__price">
                         <h2 className="price">{goods.price} ₽</h2>
-                        <Quantity good={goods} setCount={setCount} key={`Counter ${goods.id}`}/>
-
-                        <button className="toCart__btn" onClick={addHandler}>
+                        <Quantity cartstate={inCart} goods={goods} key={`Counter ${goods.id}`}/>
+                        <button className="toCart__btn" onClick={addToCartPageGoods}>
                             в корзину
                             <img src={CartImg} alt="Корзина" />
                         </button>
@@ -82,10 +79,6 @@ const GoodsPage: FC = () => {
                 </div>
             </div>
         </div>
-        //             )
-        //         })}
-
-        //     </div>
     );
 };
 

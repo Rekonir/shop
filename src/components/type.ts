@@ -11,7 +11,7 @@ export interface IGoods {
     description: string,
     price: number,
     usePlace: string[]
-    counter?: number
+    counter: number
 }
 export interface IGoodsItem {
     goods: IGoods,
@@ -21,7 +21,7 @@ export interface ICartItem extends IGoods {
     counter: number
 }
 export type showType = {
-    UpFilterShow?:boolean,
+    UpFilterShow?: boolean,
     GoodsPageShow?: boolean,
     GoodsPageId?: string,
     CartShow?: boolean,
@@ -38,15 +38,17 @@ export type checkedState = {
     FrChecked?: boolean,
 }
 export interface IQuantity {
-	// counter: number
-	setCount?: TypeSetState<number>
-    key:string
-    good:IGoods
+    counter?: number
+    setCount?: TypeSetState<number>
+    key?: string
+    goods?: IGoods,
+    cartstate: boolean
 }
 export type TypeSetState<T> = Dispatch<SetStateAction<T>>
 
 export interface IPagination {
-    goodsPerPage:number,
-    totalGoods:number,
-    paginate:any
+    goodsPerPage: number,
+    totalGoods: number,
+    paginate: any,
+    currentPage: number
 }

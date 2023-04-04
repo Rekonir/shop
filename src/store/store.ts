@@ -2,6 +2,7 @@ import { createStore } from "redux";
 import { FilterGoodsData } from "../components/SideMenu";
 import { showType } from "../components/type";
 import GoodsData from '../GoodsData.json'
+import Cart from "../components/Cart";
 
 
 const defShow: showType = {
@@ -64,9 +65,50 @@ export const ShowReduser = (state = defShow, action: any) => {
             console.log(cart.CartPool)
             return { ...state, CartPool: cart.CartPool }
         }
-        case "delFormCart":{
-			return {...state, CartPool: state.CartPool.filter(item => item.id !== action.payload)}
-		}
+        case "addToCartPageGoods": {
+            const cart = { ...state }
+            const goods = action.payload
+            const foundProduct = cart.CartPool.find(item => item.id === goods.id)
+            if (foundProduct) {
+                foundProduct.counter = goods.counter
+            } else {
+                cart.CartPool.push({
+                    ...goods,
+                })
+            }
+            return { ...state, CartPool: cart.CartPool }
+        }
+        case "changeCounter": {
+            const cart = { ...state }
+            const { newCounter, goods, cartstate } = action.payload
+            const ChangeGood = GoodsData.find(item => item.id === goods.id)
+            ChangeGood.counter = newCounter
+            let GoodsInCart = cart.CartPool.find(item => item.id === goods.id)
+
+            if (cartstate) {
+                if (GoodsInCart) {
+                    GoodsInCart.counter = ChangeGood.counter
+                } else {
+                    GoodsInCart = ChangeGood
+                    cart.CartPool.push({
+                        ...goods,
+                        newCounter,
+                    })
+                }
+                console.log(cart.CartPool)
+                return { ...state, CartPool: cart.CartPool }
+            } else {
+                const ChangeGood = GoodsData.find(item => item.id === goods.id)
+                ChangeGood.counter = newCounter
+                console.log('В store', ChangeGood)
+                return { ...state, CartPool: cart.CartPool }
+
+            }
+
+        }
+        case "delFormCart": {
+            return { ...state, CartPool: state.CartPool.filter(item => item.id !== action.payload) }
+        }
 
         default:
             return state
