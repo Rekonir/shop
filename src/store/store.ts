@@ -2,7 +2,6 @@ import { createStore } from "redux";
 import { FilterGoodsData } from "../components/SideMenu";
 import { showType } from "../components/type";
 import GoodsData from '../GoodsData.json'
-import Cart from "../components/Cart";
 
 
 const defShow: showType = {
@@ -13,7 +12,8 @@ const defShow: showType = {
     CatatlodShow: true,
     ThaksShow: false,
     chengeCatalog: GoodsData,
-    CartPool: []
+    CartPool: [],
+    ShowAdmin: false
 
 }
 export const ShowReduser = (state = defShow, action: any) => {
@@ -108,6 +108,9 @@ export const ShowReduser = (state = defShow, action: any) => {
         }
         case "delFormCart": {
             return { ...state, CartPool: state.CartPool.filter(item => item.id !== action.payload) }
+        }
+        case "delFormData": {
+            return { ...state, chengeCatalog: state.chengeCatalog.filter(item => item.id !== action.payload) }
         }
 
         default:

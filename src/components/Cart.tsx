@@ -13,7 +13,7 @@ const Cart: FC = () => {
     }
     const CartData: any  = useSelector<showType>(state => state.CartPool)
     console.log(CartData)
-	const Total = CartData.reduce((acc:number, item:any) => acc + item.price, 0)
+	const Total = CartData.reduce((acc:number, item:any) => acc + item.price*item.counter, 0)
 
     return (
         

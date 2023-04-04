@@ -9,8 +9,7 @@ import { Provider } from 'react-redux';
 import { store } from './store/store';
 import Catalog from './components/Catalog';
 import { Route, Routes } from 'react-router-dom';
-
-
+import Admin from './components/Admin';
 
 const App: FC = () => {
 
@@ -19,6 +18,7 @@ const App: FC = () => {
       <Header />
       <UpFilter />
       <Routes>
+        <Route path='/admin' element={<Admin/>}/>
         <Route path='*' element={<Catalog />} />
         <Route path='/:id' element={<GoodsPage />} />
         <Route path='/cart' element={<CartPage />} />

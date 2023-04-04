@@ -28,6 +28,9 @@ const Header: FC = () => {
     const ShowCatalogBtn = () => {
         dispatch({ type: "CatatlodShow" });
     }
+    const ShowAdmin = () => {
+        dispatch({ type: "ShowAdmin" })
+    }
     return (
         <div className='Header'>
             <div className='Header__Up'>
@@ -52,7 +55,7 @@ const Header: FC = () => {
                     <div className="btn__menu">
                         <img src={BurgMenu} alt="Меню" />
                     </div>
-                    <Link to='/'className="logo__box" onClick={ShowCatalogBtn}>
+                    <Link to='/' className="logo__box" onClick={ShowCatalogBtn}>
                         <img className='logo' src={LogoImg} alt='логотип'></img>
                         <img className='logo1' src={LogoImg1} alt='логотип'></img>
                         <img className='logo2' src={LogoImg1} alt='логотип'></img>
@@ -65,11 +68,11 @@ const Header: FC = () => {
                             <img className='logo' src={LogoImgN} alt='логотип'></img>
                         </div>
                     </Link>
-                    <div className="btn">
+                    <Link to='/admin' className="btn" onClick={ShowAdmin}>
                         <p>Каталог</p>
                         <img src={btnImg} alt="" />
 
-                    </div>
+                    </Link>
                     <Search />
                     <div className="Header__call">
                         <div className="call__text">
@@ -88,10 +91,10 @@ const Header: FC = () => {
                 </div>
             </div>
             <div className="Mobile__Down">
-                <div className="btn">
+                <Link to='/admin' className="btn" onClick={ShowAdmin}>
                     <img src={btnImgBlack} alt="" />
                     <p>Каталог</p>
-                </div>
+                </Link>
                 <div className="inp__box">
                     <div className="inp__icon">
                         <img src={SearchIconBlack} alt="Поиск" />
