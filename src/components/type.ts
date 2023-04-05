@@ -29,7 +29,16 @@ export type showType = {
     ThaksShow?: boolean,
     chengeCatalog?: Array<IGoods>
     CartPool?: Array<IGoods>
-    ShowAdmin?: boolean
+    ShowAdmin?: boolean,
+    showFilterUl1?: boolean,
+    showFilterUl2?: boolean,
+    showFilterUl3?: boolean,
+    showFilterUl4?: boolean,
+    showFilterUl5?: boolean,
+    showFilterUl6?: boolean,
+    showFilterUl7?: boolean,
+    showFilterUl8?: boolean,
+
 
 }
 export type checkedState = {

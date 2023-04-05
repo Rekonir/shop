@@ -14,7 +14,8 @@ const CartPage: FC = () => {
     const CartShow = useSelector<showType>(state => state.CartShow)
     const ShowClass = CartShow ? 'show' : 'hide'
 
-    const CartData: any = useSelector<showType>(state => state.CartPool)
+    const State: any = useSelector<showType>(state => state)
+    const CartData = State.CartPool
     const Total = CartData.reduce((acc: number, item: any) => acc + item.price * item.counter, 0)
 
     const dispatch = useDispatch()

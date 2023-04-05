@@ -271,37 +271,28 @@ h3.positions__subheader {
   display: none;
 }
 
-.Catalog {
-  width: 100%;
-  margin: 0px 280px;
-  display: flex;
-  justify-content: start;
-  align-items: start;
-  flex-direction: row;
-  gap: 100px;
-}
-.Catalog .SideMenu {
+.SideMenu {
   width: 13%;
   display: flex;
   justify-content: start;
   align-items: start;
   flex-direction: column;
 }
-.Catalog .SideMenu .SideMenu__filter {
+.SideMenu .SideMenu__filter {
   display: flex;
   justify-content: start;
   align-items: start;
   flex-direction: column;
   gap: 20px;
 }
-.Catalog .SideMenu .SideMenu__filter .check__filter {
+.SideMenu .SideMenu__filter .check__filter {
   display: flex;
   justify-content: center;
   align-items: start;
   flex-direction: column;
   gap: 15px;
 }
-.Catalog .SideMenu .SideMenu__filter .check__filter .filter {
+.SideMenu .SideMenu__filter .check__filter .filter {
   width: 100%;
   position: relative;
   display: flex;
@@ -309,7 +300,7 @@ h3.positions__subheader {
   align-items: baseline;
   flex-direction: row;
 }
-.Catalog .SideMenu .SideMenu__filter .check__filter .filter label {
+.SideMenu .SideMenu__filter .check__filter .filter label {
   position: absolute;
   z-index: 1;
   width: 100%;
@@ -321,11 +312,11 @@ h3.positions__subheader {
   line-height: 90%;
   color: #3f4e65;
 }
-.Catalog .SideMenu .SideMenu__filter .check__filter:nth-child(3) {
+.SideMenu .SideMenu__filter .check__filter:nth-child(3) {
   padding-bottom: 20px;
   border-bottom: 1px dashed rgba(63, 78, 101, 0.3);
 }
-.Catalog .SideMenu .SideMenu__btns {
+.SideMenu .SideMenu__btns {
   display: flex;
   justify-content: center;
   align-items: start;
@@ -333,33 +324,34 @@ h3.positions__subheader {
   gap: 10px;
   margin-bottom: 40px;
 }
-.Catalog .SideMenu .more {
+.SideMenu .more {
   width: 100%;
   font-weight: 500;
   font-size: 12px;
   line-height: 150%;
   color: #3f4e65;
+  cursor: pointer;
 }
-.Catalog .SideMenu .more::after {
+.SideMenu .more::after {
   content: "▼";
   width: 5px;
   height: 5px;
   margin-left: 5px;
 }
-.Catalog .SideMenu .SideMenu__positions {
+.SideMenu .SideMenu__positions {
   width: 100%;
 }
-.Catalog .SideMenu .SideMenu__positions .check__filter {
+.SideMenu .SideMenu__positions .check__filter {
   display: flex;
   justify-content: center;
   align-items: start;
   flex-direction: column;
 }
-.Catalog .SideMenu .SideMenu__positions ul.positions {
+.SideMenu .SideMenu__positions ul.positions {
   margin: 20px auto;
   border-bottom: 1px dashed rgba(63, 78, 101, 0.3);
 }
-.Catalog .SideMenu .SideMenu__positions ul.positions li {
+.SideMenu .SideMenu__positions ul.positions li {
   margin: 5px 0;
   list-style-type: none;
   font-weight: 400;
@@ -367,10 +359,10 @@ h3.positions__subheader {
   line-height: 150%;
   color: #3f4e65;
 }
-.Catalog .SideMenu .SideMenu__positions ul.positions li:last-child {
+.SideMenu .SideMenu__positions ul.positions li:last-child {
   margin-bottom: 20px;
 }
-.Catalog .SideMenu .SideMenu__positions .SideMenu__brend {
+.SideMenu .SideMenu__positions .SideMenu__brend {
   width: 100%;
   display: flex;
   justify-content: center;
@@ -378,6 +370,16 @@ h3.positions__subheader {
   flex-direction: row;
   flex-wrap: wrap;
   gap: 20px;
+}
+
+.Catalog {
+  width: 100%;
+  margin: 0px 280px;
+  display: flex;
+  justify-content: start;
+  align-items: start;
+  flex-direction: row;
+  gap: 100px;
 }
 .Catalog .Page__goods {
   width: 55%;
@@ -721,8 +723,19 @@ h3.positions__subheader {
   display: flex;
 }
 
+.showUl {
+  display: block;
+  cursor: pointer;
+}
+
+.showMob {
+  display: flex;
+  position: relative;
+  z-index: 20;
+}
+
 .hide {
-  display: none;
+  display: none !important;
 }
 
 .map__nav {
@@ -1079,6 +1092,7 @@ h3.positions__subheader {
     display: none;
   }
   .Header .Header__Down .btn__menu {
+    cursor: pointer;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -1138,11 +1152,9 @@ h3.positions__subheader {
     justify-content: start;
     align-items: start;
     flex-direction: column;
+    gap: 15px;
   }
   .UpFilter .UpFilter__sort .sort {
-    position: absolute;
-    top: 580px;
-    left: 15px;
     display: flex;
   }
   .UpFilter ul.Filter__list {
@@ -1156,73 +1168,78 @@ h3.positions__subheader {
     text-align: start;
     padding: 0;
   }
+  .SideMenu {
+    padding: 15px;
+    margin: 0;
+    width: 100%;
+    display: flex;
+    margin-top: 35px;
+  }
+  .SideMenu h3.positions__subheader {
+    display: none;
+  }
+  .SideMenu .SideMenu__filter {
+    width: 100%;
+  }
+  .SideMenu .SideMenu__filter .check__filter {
+    width: 100%;
+  }
+  .SideMenu .SideMenu__btns {
+    width: 100%;
+    padding: 0;
+  }
+  .SideMenu .SideMenu__positions {
+    display: none;
+  }
+  .Page__goods {
+    width: 100%;
+    display: flex;
+  }
+  .Page__goods .Goods {
+    justify-content: center;
+  }
   .Catalog {
     padding: 15px;
     margin: 0;
   }
   .Catalog .SideMenu {
-    width: 100%;
-    display: none;
-    margin-top: 35px;
-  }
-  .Catalog .SideMenu h3.positions__subheader {
     display: none;
   }
-  .Catalog .SideMenu .SideMenu__filter {
-    width: 100%;
-  }
-  .Catalog .SideMenu .SideMenu__filter .check__filter {
-    width: 100%;
-  }
-  .Catalog .SideMenu .SideMenu__btns {
-    width: 100%;
-    padding: 0;
-  }
-  .Catalog .SideMenu .SideMenu__positions {
-    display: none;
-  }
-  .Catalog .Page__goods {
-    width: 100%;
-    display: flex;
-  }
-  .Catalog .Page__goods .Goods {
-    justify-content: center;
-  }
-  .GoodsPage {
+  .Catalog .GoodsPage {
     margin: 0;
     padding: 0 15px;
     gap: 0;
   }
-  .GoodsPage .Goods__content {
+  .Catalog .GoodsPage .Goods__content {
     padding: 0;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     gap: 15px;
   }
-  .GoodsPage .Goods__content img {
+  .Catalog .GoodsPage .Goods__content img {
     max-width: 290px;
     max-height: 200px;
   }
-  .GoodsPage .Goods__content .content__info {
+  .Catalog .GoodsPage .Goods__content .content__info {
     width: 100%;
   }
-  .GoodsPage .Goods__content .content__info .good__size {
+  .Catalog .GoodsPage .Goods__content .content__info .good__size {
     display: none;
   }
-  .GoodsPage .Goods__content .content__info .content__price {
+  .Catalog .GoodsPage .Goods__content .content__info .content__price {
     width: 100%;
     justify-content: start;
     align-items: baseline;
     flex-wrap: wrap;
     gap: 25px;
   }
-  .GoodsPage .Goods__content .content__info .content__price .toCart__btn {
+  .Catalog .GoodsPage .Goods__content .content__info .content__price .toCart__btn {
     min-width: 184px;
     min-height: 60px;
     margin-right: 120px;
   }
-  .GoodsPage .Goods__content .content__info .content__action {
+  .Catalog .GoodsPage .Goods__content .content__info .content__action {
     width: 100%;
     padding: 0;
     position: relative;
@@ -1231,15 +1248,15 @@ h3.positions__subheader {
     flex-wrap: wrap;
     gap: 60px;
   }
-  .GoodsPage .Goods__content .content__info .content__action img[alt=Поделиться] {
+  .Catalog .GoodsPage .Goods__content .content__info .content__action img[alt=Поделиться] {
     position: absolute;
     top: -75px;
     right: 20px;
   }
-  .GoodsPage .Goods__content .content__info .content__action .btn {
+  .Catalog .GoodsPage .Goods__content .content__info .content__action .btn {
     width: 100%;
   }
-  .GoodsPage .Goods__content .content__info .good__info:last-child {
+  .Catalog .GoodsPage .Goods__content .content__info .good__info:last-child {
     display: none;
   }
   .CartPage {

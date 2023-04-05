@@ -13,42 +13,60 @@ const defShow: showType = {
     ThaksShow: false,
     chengeCatalog: GoodsData,
     CartPool: [],
-    ShowAdmin: false
+    ShowAdmin: false,
+    showFilterUl1: true,
+    showFilterUl2: true,
+    showFilterUl3: true,
+    showFilterUl4: true,
+    showFilterUl5: true,
+    showFilterUl6: true,
+    showFilterUl7: true,
+    showFilterUl8: true,
 
 }
 export const ShowReduser = (state = defShow, action: any) => {
     switch (action.type) {
-        case "CartShow":
-            return { ...state, CartShow: true, CatatlodShow: true, GoodsPageShow: true, UpFilterShow: false }
-        case "CatatlodShow":
-            return { ...state, CatatlodShow: true, CartShow: true, GoodsPageShow: true, UpFilterShow: true }
-        case "ThaksShow":
-            return { ...state, ThaksShow: !state.ThaksShow, CartPool: [], chengeCatalog: GoodsData, UpFilterShow: true }
-        case "GoodsPageShow":
-            return { ...state, GoodsPageShow: true, CartShow: true, CatatlodShow: true, UpFilterShow: false, GoodsPageId: action.payload }
 
-        case "chengeCatalog":
-            return { ...state, chengeCatalog: state.chengeCatalog = FilterGoodsData, }
-        case "SotrNameUp":
-            const sortUName = state.chengeCatalog.sort((a, b) => a.name.localeCompare(b.name))
-            console.log(sortUName)
+        case "CartShow":
             return {
-                ...state, chengeCatalog: sortUName
+                ...state, CartShow: true, CatatlodShow: true, GoodsPageShow: true, UpFilterShow: false
+            }
+        case "CatatlodShow":
+            return {
+                ...state, CatatlodShow: true, CartShow: true, GoodsPageShow: true, UpFilterShow: true
+            }
+        case "ThaksShow":
+            return {
+                ...state, ThaksShow: !state.ThaksShow, CartPool: [], chengeCatalog: GoodsData, UpFilterShow: true
+            }
+        case "GoodsPageShow":
+            return {
+                ...state, GoodsPageShow: true, CartShow: true, CatatlodShow: true, UpFilterShow: false, GoodsPageId: action.payload
+            }
+        case 'toggleSide':
+            return {
+                ...state, UpFilterShow: false
+            }
+        case "chengeCatalog":
+            return {
+                ...state, chengeCatalog: state.chengeCatalog = FilterGoodsData,
+            }
+        case "SotrNameUp":
+            return {
+                ...state, chengeCatalog: state.chengeCatalog.sort((a, b) => a.name.localeCompare(b.name))
             }
         case "SotrNameDown":
-            const sortDName = state.chengeCatalog.sort((a, b) => b.name.localeCompare(a.name))
-            console.log(sortDName)
             return {
-                ...state, chengeCatalog: sortDName
+                ...state, chengeCatalog: state.chengeCatalog.sort((a, b) => b.name.localeCompare(a.name))
             }
         case "SotrPriceDown":
-            const sortDPtice = state.chengeCatalog.sort((a, b) => b.price - a.price);
-            console.log(sortDPtice)
-            return { ...state, chengeCatalog: sortDPtice }
+            return {
+                ...state, chengeCatalog: state.chengeCatalog.sort((a, b) => b.price - a.price)
+            }
         case "SotrPriceUp":
-            const sortUPtice = state.chengeCatalog.sort((a, b) => a.price - b.price);
-            console.log(sortUPtice)
-            return { ...state, chengeCatalog: sortUPtice }
+            return {
+                ...state, chengeCatalog: state.chengeCatalog.sort((a, b) => a.price - b.price)
+            }
 
         case "addToCart": {
             const cart = { ...state }
@@ -62,7 +80,6 @@ export const ShowReduser = (state = defShow, action: any) => {
                     counter,
                 })
             }
-            console.log(cart.CartPool)
             return { ...state, CartPool: cart.CartPool }
         }
         case "addToCartPageGoods": {
@@ -106,13 +123,46 @@ export const ShowReduser = (state = defShow, action: any) => {
             }
 
         }
-        case "delFormCart": {
+        case "delFromCart": {
             return { ...state, CartPool: state.CartPool.filter(item => item.id !== action.payload) }
         }
-        case "delFormData": {
+        case "delFromData": {
             return { ...state, chengeCatalog: state.chengeCatalog.filter(item => item.id !== action.payload) }
         }
+        case "addPosition": {
+            const NewPosition = action.payload
+            state.chengeCatalog.push(NewPosition)
+            return { ...state, chengeCatalog: state.chengeCatalog }
+        }
 
+        case 'FilterUl1': {
+
+            return { ...state, chengeCatalog: state.chengeCatalog.filter(item => item.usePlace.includes('Уход за телом')), showFilterUl1: true, showFilterUl2: false, showFilterUl3: false, showFilterUl4: false, showFilterUl5: false, showFilterUl6: false, showFilterUl7: false, showFilterUl8: false, }
+        }
+        case 'FilterUl2': {
+            return { ...state, chengeCatalog: state.chengeCatalog.filter(item => item.usePlace.includes('Уход за рукам')), showFilterUl2: true, showFilterUl1: false, showFilterUl3: false, showFilterUl4: false, showFilterUl5: false, showFilterUl6: false, showFilterUl7: false, showFilterUl8: false, }
+        }
+        case 'FilterUl3': {
+            return { ...state, chengeCatalog: state.chengeCatalog.filter(item => item.usePlace.includes('Уход за ногами')), showFilterUl3: true, showFilterUl2: false, showFilterUl1: false, showFilterUl4: false, showFilterUl5: false, showFilterUl6: false, showFilterUl7: false, showFilterUl8: false, }
+        }
+        case 'FilterUl4': {
+            return { ...state, chengeCatalog: state.chengeCatalog.filter(item => item.usePlace.includes('Уход за лицом')), showFilterUl4: true, showFilterUl2: false, showFilterUl3: false, showFilterUl1: false, showFilterUl5: false, showFilterUl6: false, showFilterUl7: false, showFilterUl8: false, }
+        }
+        case 'FilterUl5': {
+            return { ...state, chengeCatalog: state.chengeCatalog.filter(item => item.usePlace.includes('Уход за волосами')), showFilterUl5: true, showFilterUl2: false, showFilterUl3: false, showFilterUl4: false, showFilterUl1: false, showFilterUl6: false, showFilterUl7: false, showFilterUl8: false, }
+        }
+        case 'FilterUl6': {
+            return { ...state, chengeCatalog: state.chengeCatalog.filter(item => item.usePlace.includes('Средства для загара')), showFilterUl6: true, showFilterUl2: false, showFilterUl3: false, showFilterUl4: false, showFilterUl5: false, showFilterUl1: false, showFilterUl7: false, showFilterUl8: false, }
+        }
+        case 'FilterUl7': {
+            return { ...state, chengeCatalog: state.chengeCatalog.filter(item => item.usePlace.includes('Средства для бритья')), showFilterUl7: true, showFilterUl2: false, showFilterUl3: false, showFilterUl4: false, showFilterUl5: false, showFilterUl6: false, showFilterUl1: false, showFilterUl8: false, }
+        }
+        case 'FilterUl8': {
+            return { ...state, chengeCatalog: state.chengeCatalog.filter(item => item.usePlace.includes('Подарочные наборы')), showFilterUl8: true, showFilterUl2: false, showFilterUl3: false, showFilterUl4: false, showFilterUl5: false, showFilterUl6: false, showFilterUl7: false, showFilterUl1: false, }
+        }
+        case 'FilterUlAll': {
+            return { ...state, chengeCatalog: GoodsData, showFilterUl8: true, showFilterUl2: true, showFilterUl3: true, showFilterUl4: true, showFilterUl5: true, showFilterUl6: true, showFilterUl7: true, showFilterUl1: true, }
+        }
         default:
             return state
 

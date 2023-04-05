@@ -1,12 +1,13 @@
-import React from 'react';
+import React, { FC } from 'react';
 import SideMenu from './SideMenu';
 import GoodsAdminItem from './GoodsAdminItem';
 import { useSelector } from 'react-redux';
 import { showType } from './type';
 import AdminBox from './AdminBox';
 
-const Admin = () => {
-    const chengeCatalog: any = useSelector<showType>(state => state.chengeCatalog)
+const Admin:FC = () => {
+    const State: any = useSelector<showType>(state => state)
+    const chengeCatalog =State.chengeCatalog
     return (
         <div className={`Catalog`}>
             <SideMenu />

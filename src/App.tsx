@@ -5,20 +5,22 @@ import GoodsPage from './components/GoodsPage';
 import Header from './components/Header';
 import Thanks from './components/Thanks';
 import UpFilter from './components/UpFilter';
-import { Provider } from 'react-redux';
+import { Provider} from 'react-redux';
 import { store } from './store/store';
 import Catalog from './components/Catalog';
 import { Route, Routes } from 'react-router-dom';
 import Admin from './components/Admin';
+import SideMenu from './components/SideMenu';
 
 const App: FC = () => {
-
+  
   return (
     <Provider store={store}>
       <Header />
       <UpFilter />
       <Routes>
-        <Route path='/admin' element={<Admin/>}/>
+        <Route path='/sidemenu' element={<SideMenu />} />
+        <Route path='/admin' element={<Admin />} />
         <Route path='*' element={<Catalog />} />
         <Route path='/:id' element={<GoodsPage />} />
         <Route path='/cart' element={<CartPage />} />

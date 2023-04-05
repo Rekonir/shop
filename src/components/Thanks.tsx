@@ -7,7 +7,6 @@ import { showType } from './type';
 const Thanks = () => {
     
     const ThaksShow = useSelector<showType>(state => state.ThaksShow)
-    console.log(ThaksShow)
     const ShowClass = ThaksShow ? 'show' : 'hide'
     
     const dispatch = useDispatch()

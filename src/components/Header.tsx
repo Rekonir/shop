@@ -28,11 +28,15 @@ const Header: FC = () => {
     const ShowCatalogBtn = () => {
         dispatch({ type: "CatatlodShow" });
     }
+    
     const ShowAdmin = () => {
         dispatch({ type: "ShowAdmin" })
     }
+    const toggleSide = () => {
+        dispatch({ type: "toggleSide" })
+    }
     return (
-        <div className='Header'>
+        <div className='Header' >
             <div className='Header__Up'>
                 <div className="Header__content">
                     <div className="Header_address">
@@ -52,9 +56,9 @@ const Header: FC = () => {
 
             <div className='Header__Down'>
                 <div className="Header__content">
-                    <div className="btn__menu">
+                    <Link to="/sidemenu" className="btn__menu" onClick={toggleSide}>
                         <img src={BurgMenu} alt="Меню" />
-                    </div>
+                    </Link>
                     <Link to='/' className="logo__box" onClick={ShowCatalogBtn}>
                         <img className='logo' src={LogoImg} alt='логотип'></img>
                         <img className='logo1' src={LogoImg1} alt='логотип'></img>
@@ -102,8 +106,6 @@ const Header: FC = () => {
                     <p>Поиск</p>
                 </div>
             </div>
-            <p className='back'>Назад</p>
-
         </div >
     );
 };

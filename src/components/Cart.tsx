@@ -9,14 +9,15 @@ import { Link } from 'react-router-dom';
 const Cart: FC = () => {
     const dispatch = useDispatch()
     const ShowCartBtn = () => {
-        dispatch({type: "CartShow"});
+        dispatch({ type: "CartShow" });
     }
-    const CartData: any  = useSelector<showType>(state => state.CartPool)
-    console.log(CartData)
-	const Total = CartData.reduce((acc:number, item:any) => acc + item.price*item.counter, 0)
+
+    const State: any = useSelector<showType>(state => state)
+    const CartData = State.CartPool
+    const Total = CartData.reduce((acc: number, item: any) => acc + item.price * item.counter, 0)
 
     return (
-        
+
         <Link to='/cart' className='Cart__box' onClick={ShowCartBtn}>
             <button className="Cart__img">
                 <img src={CartImg} alt="Корзина" />

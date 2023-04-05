@@ -267,6 +267,108 @@ h3.positions__subheader {
         display: none;
     }
 }
+.SideMenu {
+    width: 13%;
+    display: flex;
+    justify-content: start;
+    align-items: start;
+    flex-direction: column;
+    .SideMenu__filter {
+        display: flex;
+        justify-content: start;
+        align-items: start;
+        flex-direction: column;
+        gap: 20px;
+        .check__filter {
+            display: flex;
+            justify-content: center;
+            align-items: start;
+            flex-direction: column;
+            gap: 15px;
+            .filter {
+                width: 100%;
+                position: relative;
+                display: flex;
+                justify-content: start;
+                align-items: baseline;
+                flex-direction: row;
+                label {
+                    position: absolute;
+                    z-index: 1;
+                    width: 100%;
+                    top: 0;
+                    left: 0;
+                    padding-left: 20px;
+                    font-weight: 400;
+                    font-size: 14px;
+                    line-height: 90%;
+                    color: #3f4e65;
+                }
+            }
+        }
+        .check__filter:nth-child(3) {
+            padding-bottom: 20px;
+            border-bottom: 1px dashed rgba(63, 78, 101, 0.3);
+        }
+    }
+
+    .SideMenu__btns {
+        display: flex;
+        justify-content: center;
+        align-items: start;
+        flex-direction: row;
+        gap: 10px;
+        margin-bottom: 40px;
+    }
+
+    .more {
+        width: 100%;
+        font-weight: 500;
+        font-size: 12px;
+        line-height: 150%;
+        color: #3f4e65;
+        cursor: pointer;
+    }
+    .more::after {
+        content: "▼";
+        width: 5px;
+        height: 5px;
+        margin-left: 5px;
+    }
+    .SideMenu__positions {
+        width: 100%;
+        .check__filter {
+            display: flex;
+            justify-content: center;
+            align-items: start;
+            flex-direction: column;
+        }
+        ul.positions {
+            margin: 20px auto;
+            border-bottom: 1px dashed rgba(63, 78, 101, 0.3);
+            li {
+                margin: 5px 0;
+                list-style-type: none;
+                font-weight: 400;
+                font-size: 14px;
+                line-height: 150%;
+                color: #3f4e65;
+            }
+            li:last-child {
+                margin-bottom: 20px;
+            }
+        }
+        .SideMenu__brend {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: start;
+            flex-direction: row;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+    }
+}
 .Catalog {
     width: 100%;
     margin: 0px 280px;
@@ -275,107 +377,7 @@ h3.positions__subheader {
     align-items: start;
     flex-direction: row;
     gap: 100px;
-    .SideMenu {
-        width: 13%;
-        display: flex;
-        justify-content: start;
-        align-items: start;
-        flex-direction: column;
-        .SideMenu__filter {
-            display: flex;
-            justify-content: start;
-            align-items: start;
-            flex-direction: column;
-            gap: 20px;
-            .check__filter {
-                display: flex;
-                justify-content: center;
-                align-items: start;
-                flex-direction: column;
-                gap: 15px;
-                .filter {
-                    width: 100%;
-                    position: relative;
-                    display: flex;
-                    justify-content: start;
-                    align-items: baseline;
-                    flex-direction: row;
-                    label {
-                        position: absolute;
-                        z-index: 1;
-                        width: 100%;
-                        top: 0;
-                        left: 0;
-                        padding-left: 20px;
-                        font-weight: 400;
-                        font-size: 14px;
-                        line-height: 90%;
-                        color: #3f4e65;
-                    }
-                }
-            }
-            .check__filter:nth-child(3) {
-                padding-bottom: 20px;
-                border-bottom: 1px dashed rgba(63, 78, 101, 0.3);
-            }
-        }
 
-        .SideMenu__btns {
-            display: flex;
-            justify-content: center;
-            align-items: start;
-            flex-direction: row;
-            gap: 10px;
-            margin-bottom: 40px;
-        }
-
-        .more {
-            width: 100%;
-            font-weight: 500;
-            font-size: 12px;
-            line-height: 150%;
-            color: #3f4e65;
-        }
-        .more::after {
-            content: "▼";
-            width: 5px;
-            height: 5px;
-            margin-left: 5px;
-        }
-        .SideMenu__positions {
-            width: 100%;
-            .check__filter {
-                display: flex;
-                justify-content: center;
-                align-items: start;
-                flex-direction: column;
-            }
-            ul.positions {
-                margin: 20px auto;
-                border-bottom: 1px dashed rgba(63, 78, 101, 0.3);
-                li {
-                    margin: 5px 0;
-                    list-style-type: none;
-                    font-weight: 400;
-                    font-size: 14px;
-                    line-height: 150%;
-                    color: #3f4e65;
-                }
-                li:last-child {
-                    margin-bottom: 20px;
-                }
-            }
-            .SideMenu__brend {
-                width: 100%;
-                display: flex;
-                justify-content: center;
-                align-items: start;
-                flex-direction: row;
-                flex-wrap: wrap;
-                gap: 20px;
-            }
-        }
-    }
     .Page__goods {
         width: 55%;
         display: flex;
@@ -641,7 +643,7 @@ h3.positions__subheader {
     gap: 25px;
     justify-content: space-between;
     align-items: center;
-    .admin__position{
+    .admin__position {
         width: 100%;
         display: flex;
         flex-direction: row;
@@ -649,11 +651,10 @@ h3.positions__subheader {
         align-items: baseline;
         border-bottom: 1px dashed rgba(43, 28, 1, 0.7);
         padding: 5px;
-        input{
+        input {
             width: 60%;
             border-radius: 4px;
             padding: 4px;
-            
         }
     }
 }
@@ -721,8 +722,17 @@ h3.positions__subheader {
 .show {
     display: flex;
 }
+.showUl {
+    display: block;
+    cursor: pointer;
+}
+.showMob {
+    display: flex;
+    position: relative;
+    z-index: 20;
+}
 .hide {
-    display: none;
+    display: none !important;
 }
 .map__nav {
     width: 100%;
@@ -1062,6 +1072,7 @@ h3.positions__subheader {
         }
         .Header__Down {
             .btn__menu {
+                cursor: pointer;
                 display: flex;
                 justify-content: center;
                 align-items: center;
@@ -1122,10 +1133,8 @@ h3.positions__subheader {
             justify-content: start;
             align-items: start;
             flex-direction: column;
+            gap: 15px;
             .sort {
-                position: absolute;
-                top: 580px;
-                left: 15px;
                 display: flex; /////////////////////////////////
             }
         }
@@ -1141,94 +1150,102 @@ h3.positions__subheader {
             }
         }
     }
+    .SideMenu {
+        padding: 15px;
+        margin: 0;
+        width: 100%;
+        display: flex; //////////////////
+        margin-top: 35px;
+
+        h3.positions__subheader {
+            display: none;
+        }
+        .SideMenu__filter {
+            width: 100%;
+            .check__filter {
+                width: 100%;
+            }
+        }
+
+        .SideMenu__btns {
+            width: 100%;
+            padding: 0;
+        }
+        .SideMenu__positions {
+            display: none;
+        }
+    }
+    .Page__goods {
+        width: 100%;
+        display: flex; //////////////////////////////
+        .Goods {
+            justify-content: center;
+        }
+    }
     .Catalog {
         padding: 15px;
         margin: 0;
         .SideMenu {
-            width: 100%;
-            display: none; //////////////////
-            margin-top: 35px;
-            h3.positions__subheader {
-                display: none;
-            }
-            .SideMenu__filter {
-                width: 100%;
-                .check__filter {
-                    width: 100%;
-                }
-            }
+            display: none;
+        }
 
-            .SideMenu__btns {
-                width: 100%;
+        .GoodsPage {
+            margin: 0;
+            padding: 0 15px;
+            gap: 0;
+            .Goods__content {
                 padding: 0;
-            }
-            .SideMenu__positions {
-                display: none;
-            }
-        }
-        .Page__goods {
-            width: 100%;
-            display: flex; //////////////////////////////
-            .Goods {
                 justify-content: center;
-            }
-        }
-    }
-    .GoodsPage {
-        margin: 0;
-        padding: 0 15px;
-        gap: 0;
-        .Goods__content {
-            padding: 0;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-            gap: 15px;
-            img {
-                max-width: 290px;
-                max-height: 200px;
-            }
-            .content__info {
-                width: 100%;
-                .good__size {
-                    display: none;
+                align-items: center;
+                flex-direction: column;
+                gap: 15px;
+                img {
+                    max-width: 290px;
+                    max-height: 200px;
                 }
-                .content__price {
+                .content__info {
                     width: 100%;
-                    justify-content: start;
-                    align-items: baseline;
-                    flex-wrap: wrap;
-                    gap: 25px;
-                    .toCart__btn {
-                        min-width: 184px;
-                        min-height: 60px;
-                        margin-right: 120px;
+                    .good__size {
+                        display: none;
                     }
-                }
-                .content__action {
-                    width: 100%;
-                    padding: 0;
-                    position: relative;
-                    justify-content: start;
-                    align-items: start;
-                    flex-wrap: wrap;
-                    gap: 60px;
-
-                    img[alt="Поделиться"] {
-                        position: absolute;
-                        top: -75px;
-                        right: 20px;
-                    }
-                    .btn {
+                    .content__price {
                         width: 100%;
+                        justify-content: start;
+                        align-items: baseline;
+                        flex-wrap: wrap;
+                        gap: 25px;
+                        .toCart__btn {
+                            min-width: 184px;
+                            min-height: 60px;
+                            margin-right: 120px;
+                        }
                     }
-                }
-                .good__info:last-child {
-                    display: none;
+                    .content__action {
+                        width: 100%;
+                        padding: 0;
+                        position: relative;
+                        justify-content: start;
+                        align-items: start;
+                        flex-wrap: wrap;
+                        gap: 60px;
+
+                        img[alt="Поделиться"] {
+                            position: absolute;
+                            top: -75px;
+                            right: 20px;
+                        }
+                        .btn {
+                            width: 100%;
+                        }
+                    }
+                    .good__info:last-child {
+                        display: none;
+                    }
                 }
             }
         }
     }
+
     .CartPage {
         padding: 0 15px;
         gap: 0px;

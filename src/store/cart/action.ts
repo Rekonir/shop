@@ -5,14 +5,14 @@ export const addToCart = (goods: IGoods, counter: number) => ({
 	payload: { goods, counter },
 })
 export const removeFromCart = (goodsId: string) => ({
-	type: 'delFormCart',
+	type: 'delFromCart',
 	payload: goodsId,
 })
-export const addPosition = (PosotionId: string, PosotionName: string, PosotionImg: string, PosotionSizeName: string, PosotionSizeValue: string, PosotionMaker: string, PosotionBrend: string, PosotionDescription: string, PosotionPrice: number, PosotionUse: string)  => ({
+export const addPosition = (NewPosition:IGoods)  => ({
 	type: 'addPosition',
-	payload: PosotionId, PosotionName, PosotionImg, PosotionSizeName, PosotionSizeValue, PosotionMaker, PosotionBrend, PosotionDescription, PosotionPrice, PosotionUse,
+	payload: NewPosition
 })
 export const removeFromData = (goodsId: string) => ({
-	type: 'delFormData',
+	type: 'delFromData',
 	payload: goodsId,
 })

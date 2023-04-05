@@ -12,8 +12,6 @@ const GoodsAdminItem: FC<IGoodsItem> = ({ goods }) => {
 
     const GoodsPageShow = () => {
         dispatch({ type: "GoodsPageShow", payload: goods.id })
-
-        console.log(goods.id)
     }
 
     const removeDataID = (id: string) => {
