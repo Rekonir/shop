@@ -42,7 +42,7 @@ const GoodsPage: FC = () => {
                     <div className="content__price">
                         <h2 className="price">{goods.price} ₽</h2>
                         <Quantity cartstate={inCart} goods={goods} key={`Counter ${goods.id}`}/>
-                        <button className="toCart__btn" onClick={addToCartPageGoods}>
+                        <button className="toCart__btn" onClick={addToCartPageGoods} data-testid='addToCart'>
                             в корзину
                             <img src={CartImg} alt="Корзина" />
                         </button>

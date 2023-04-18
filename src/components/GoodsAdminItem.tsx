@@ -18,7 +18,7 @@ const GoodsAdminItem: FC<IGoodsItem> = ({ goods }) => {
         dispatch(removeFromData(id))
     }
     return (
-        <div className='Good__position' key={goods.id} >
+        <div className='Good__position' key={goods.id} data-testid='GoodsAdmin'>
             <img className='good__img' src={goods.img} alt={goods.name} />
             <div className="good__size">
                 <p>{goods.sizeName}</p>
@@ -32,7 +32,7 @@ const GoodsAdminItem: FC<IGoodsItem> = ({ goods }) => {
             </div>
             <div className="good__price">
                 <p> {goods.price} ₽</p>
-                <div className="btn__del" onClick={() => removeDataID(goods.id)}>
+                <div className="btn__del" onClick={() => removeDataID(goods.id)} data-testid='Del'>
                     <img src={Del} alt="удаление" />
                 </div>
             </div>

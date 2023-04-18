@@ -14,8 +14,6 @@ const GoodsItem: FC<IGoodsItem> = ({ goods }) => {
     }
     const GoodsPageShow = ()=>{
         dispatch({type: "GoodsPageShow", payload: goods.id})
-        
-        console.log(goods.id)
     }
     
     return (
@@ -25,7 +23,7 @@ const GoodsItem: FC<IGoodsItem> = ({ goods }) => {
                 <p>{goods.sizeName}</p>
                 <p>{goods.sizeValue}</p>
             </div>
-            <Link className='good__name' to={`/${goods.id}`} onClick={GoodsPageShow}> {goods.name}</Link>
+            <Link className='good__name' to={`/${goods.id}`} onClick={GoodsPageShow} data-testid='GoodsPageBtn'> {goods.name}</Link>
             <div className="good__info">
                 <p> Штрихкод: {goods.id}</p>
                 <p> Производитель: {goods.maker}</p>
@@ -33,7 +31,7 @@ const GoodsItem: FC<IGoodsItem> = ({ goods }) => {
             </div>
             <div className="good__price">
                 <p> {goods.price} ₽</p>
-                <button className="toCart__btn" onClick={addHandler}>
+                <button className="toCart__btn" onClick={addHandler} data-testid={`addToCart ${goods.id}`}>
                     в корзину
                     <img src={CartImg} alt="Корзина" />
                 </button>

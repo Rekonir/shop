@@ -24,7 +24,7 @@ const defShow: showType = {
     showFilterUl8: true,
 
 }
-export const ShowReduser = (state = defShow, action: any) => {
+export const storeReducer = (state = defShow, action: any) => {
     switch (action.type) {
 
         case "CartShow":
@@ -112,12 +112,10 @@ export const ShowReduser = (state = defShow, action: any) => {
                         newCounter,
                     })
                 }
-                console.log(cart.CartPool)
                 return { ...state, CartPool: cart.CartPool }
             } else {
                 const ChangeGood = GoodsData.find(item => item.id === goods.id)
                 ChangeGood.counter = newCounter
-                console.log('В store', ChangeGood)
                 return { ...state, CartPool: cart.CartPool }
 
             }
@@ -171,6 +169,6 @@ export const ShowReduser = (state = defShow, action: any) => {
 
 }
 
-export const store = createStore(ShowReduser)
+export const store = createStore(storeReducer)
 
 

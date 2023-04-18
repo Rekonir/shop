@@ -13,6 +13,7 @@ const Catalog: FC = () => {
     // eslint-disable-next-line react-hooks/rules-of-hooks
     const State: any = useSelector<showType>(state => state)
     const chengeCatalog = State.chengeCatalog
+    
     const CatatlodShow = useSelector<showType>(state => state.CatatlodShow)
     const ShowClass = CatatlodShow ? 'show' : 'hide'
 
@@ -35,7 +36,7 @@ const Catalog: FC = () => {
         setCurrentPage(prev => prev < 2 ? 1 : prev - 1)
     }
     return (
-        <div className={`Catalog ${ShowClass}`}>
+        <div className={`Catalog ${ShowClass}`} data-testid='CatalogRoute'>
             <SideMenu />
             <div className="Page__goods">
                 <div className={`Goods ${PageShowClass}`}>

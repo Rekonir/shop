@@ -34,52 +34,51 @@ const AdminBox = () => {
             counter: 1
             
         }
-        console.log(NewPosition)
         dispatch(addPosition(NewPosition))
     }
     return (
         <div className="admin__box">
             <div className="admin__position">
                 <label htmlFor='admin__id'> Штрихкод: </label>
-                <input type="text" className="admin__input" id='admin__id' value={PosotionId} onChange={(e) => setPosotionId(e.target.value)} />
+                <input type="text" className="admin__input" id='admin__id' data-testid='admin__id' value={PosotionId} onChange={(e) => setPosotionId(e.target.value)} />
             </div>
             <div className="admin__position">
                 <label htmlFor='admin__img'> Ссылка на картинку: </label>
-                <input type="text" className="admin__input" id='admin__img' value={PosotionImg} onChange={(e) => setPosotionImg(e.target.value)} />
+                <input type="text" className="admin__input" id='admin__img' data-testid='admin__img' value={PosotionImg} onChange={(e) => setPosotionImg(e.target.value)} />
             </div>
             <div className="admin__position">
                 <label htmlFor='admin__name'> Название: </label>
-                <input type="text" className="admin__input" id='admin__name' value={PosotionName} onChange={(e) => setPosotionName(e.target.value)} />
+                <input type="text" className="admin__input" id='admin__name' data-testid='admin__name' value={PosotionName} onChange={(e) => setPosotionName(e.target.value)} />
             </div>
             <div className="admin__position">
                 <label htmlFor='admin__sizeName'> Вид измерения: </label>
-                <input type="text" className="admin__input" id='admin__sizeName' value={PosotionSizeName} onChange={(e) => setPosotionSizeName(e.target.value)} />
+                <input type="text" className="admin__input" id='admin__sizeName' data-testid='admin__sizeName' value={PosotionSizeName} onChange={(e) => setPosotionSizeName(e.target.value)} />
             </div>
             <div className="admin__position">
                 <label htmlFor='admin__sizeValue'> Кол-во: </label>
-                <input type="text" className="admin__input" id='admin__sizeValue' value={PosotionSizeValue} onChange={(e) => setPosotionSizeValue(e.target.value)} />
+                <input type="text" className="admin__input" id='admin__sizeValue' data-testid='admin__sizeValue' value={PosotionSizeValue} onChange={(e) => setPosotionSizeValue(e.target.value)} />
             </div>
             <div className="admin__position">
                 <label htmlFor='admin__maker'> Производитель: </label>
-                <input type="text" className="admin__input" id='admin__maker' value={PosotionMaker} onChange={(e) => setPosotionMaker(e.target.value)} />
+                <input type="text" className="admin__input" id='admin__maker' data-testid='admin__maker' value={PosotionMaker} onChange={(e) => setPosotionMaker(e.target.value)} />
             </div>
             <div className="admin__position">
                 <label htmlFor='admin__brend'> Бренд: </label>
-                <input type="text" className="admin__input" id='admin__brend' value={PosotionBrend} onChange={(e) => setPosotionBrend(e.target.value)} />
+                <input type="text" className="admin__input" id='admin__brend' data-testid='admin__brend' value={PosotionBrend} onChange={(e) => setPosotionBrend(e.target.value)} />
             </div>
             <div className="admin__position">
                 <label htmlFor='admin__description'> Описание: </label>
-                <input type="text" className="admin__input" id='admin__description' value={PosotionDescription} onChange={(e) => setPosotionDescription(e.target.value)} />
+                <input type="text" className="admin__input" id='admin__description' data-testid='admin__description' value={PosotionDescription} onChange={(e) => setPosotionDescription(e.target.value)} />
             </div>
             <div className="admin__position">
                 <label htmlFor='admin__price'> Цена: </label>
-                <input type="number" className="admin__input" id='admin__price' value={PosotionPrice} onChange={(e) => setPosotionPrice(+e.target.value)} />
+                <input type="number" className="admin__input" id='admin__price' data-testid='admin__price' value={PosotionPrice} onChange={(e) => setPosotionPrice(+e.target.value)} />
             </div>
             <div className="admin__position">
                 <label htmlFor='admin__usePlace'> Тип ухода: </label>
-                <input type="text" className="admin__input" id='admin__usePlace' value={PosotionUse} onChange={(e) => setPosotionUse(e.target.value)} />
+                <input type="text" className="admin__input" id='admin__usePlace' data-testid='admin__usePlace'  value={PosotionUse} onChange={(e) => setPosotionUse(e.target.value)} />
             </div>
-            <button className='btn' onClick={NewPosition}> Ввести позицию </button>
+            <button className='btn' data-testid='addPosition' onClick={NewPosition}> Ввести позицию </button>
         </div>
     );
 };

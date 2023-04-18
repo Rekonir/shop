@@ -28,10 +28,12 @@ const Header: FC = () => {
     const ShowCatalogBtn = () => {
         dispatch({ type: "CatatlodShow" });
     }
-    
+
     const ShowAdmin = () => {
         dispatch({ type: "ShowAdmin" })
     }
+
+    module.exports = ShowAdmin
     const toggleSide = () => {
         dispatch({ type: "toggleSide" })
     }
@@ -59,7 +61,7 @@ const Header: FC = () => {
                     <Link to="/sidemenu" className="btn__menu" onClick={toggleSide}>
                         <img src={BurgMenu} alt="Меню" />
                     </Link>
-                    <Link to='/' className="logo__box" onClick={ShowCatalogBtn}>
+                    <Link to='/' className="logo__box" onClick={ShowCatalogBtn} data-testid='CatalogBtn'>
                         <img className='logo' src={LogoImg} alt='логотип'></img>
                         <img className='logo1' src={LogoImg1} alt='логотип'></img>
                         <img className='logo2' src={LogoImg1} alt='логотип'></img>
@@ -95,7 +97,7 @@ const Header: FC = () => {
                 </div>
             </div>
             <div className="Mobile__Down">
-                <Link to='/admin' className="btn" onClick={ShowAdmin}>
+                <Link to='/admin' className="btn" onClick={ShowAdmin} data-testid='AdminBtn'>
                     <img src={btnImgBlack} alt="" />
                     <p>Каталог</p>
                 </Link>

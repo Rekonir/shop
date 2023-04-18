@@ -11,12 +11,14 @@ import { removeFromCart } from '../store/cart/action';
 const CartPage: FC = () => {
     const inCart= true
 
-    const CartShow = useSelector<showType>(state => state.CartShow)
-    const ShowClass = CartShow ? 'show' : 'hide'
+    // const CartShow = useSelector<showType>(state => state.CartShow)
+    // const ShowClass = CartShow ? 'show' : 'hide'
 
     const State: any = useSelector<showType>(state => state)
     const CartData = State.CartPool
     const Total = CartData.reduce((acc: number, item: any) => acc + item.price * item.counter, 0)
+    const CartShow = State.CartShow
+    const ShowClass = CartShow ? 'show' : 'hide'
 
     const dispatch = useDispatch()
     const ShowThxBtn = () => {
@@ -38,11 +40,9 @@ const CartPage: FC = () => {
             <h1 className="Page__header">Корзина</h1>
 
             {CartData.map(goods => {
-                const OpenGood = () => {
-                    dispatch({ type: 'GoodsPageShow', payload: goods.id })
-                }
+                const OpenGood = () => {dispatch({ type: 'GoodsPageShow', payload: goods.id })}
                 return (
-                    <div className="Cart__position" key={goods.id}>
+                    <div className="Cart__position" key={goods.id} data-testid='CartGood'>
                         <img src={goods.img} alt={goods.name} />
                         <div className="Cart__info">
                             <div className="good__size">
@@ -64,7 +64,7 @@ const CartPage: FC = () => {
                 <Link to='/' className="btn" onClick={ShowThxBtn}>
                     <p>Оформить заказ</p>
                 </Link>
-                <h2 className="price"> {Total} ₽</h2>
+                <h2 className="price" data-testid='TotalPrice'>{Total} ₽</h2>
 
             </div>
 

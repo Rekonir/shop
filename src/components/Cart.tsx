@@ -18,10 +18,10 @@ const Cart: FC = () => {
 
     return (
 
-        <Link to='/cart' className='Cart__box' onClick={ShowCartBtn}>
+        <Link to='/cart' className='Cart__box' onClick={ShowCartBtn} data-testid='CartBtn'>
             <button className="Cart__img">
                 <img src={CartImg} alt="Корзина" />
-                <div className="sum__position"> {CartData.length} </div>
+                <div className="sum__position" data-testid='PositionInCart'> {CartData.length} </div>
             </button>
             <div className="Cart__text">
                 <p>Корзина</p>

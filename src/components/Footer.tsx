@@ -94,7 +94,7 @@ const Footer = () => {
             <div className="Mobile__footer">
                 <div className="Mobile__footer__box">
                     <div className="logo__box">
-                        <img className='logo' src={LogoImg} alt='логотип'></img>
+                        <img className='logo' src={LogoImg} alt='логотип' ></img>
                         <img className='logo1' src={LogoImg1} alt='логотип'></img>
                         <img className='logo2' src={LogoImg1} alt='логотип'></img>
                         <div className="logo__name">
@@ -111,7 +111,7 @@ const Footer = () => {
                         <img src={PriceImg} alt="Прайс" />
                     </div>
                 </div>
-                <p>Компания «Султан» — снабжаем розничные магазины товарами
+                <p  data-testid='CompanyDiscription'>Компания «Султан» — снабжаем розничные магазины товарами
                     "под ключ" в Кокчетаве и Акмолинской области</p>
                 <p>Подпишись на скидки и акции</p>
                 <div className="inp__box">
@@ -145,7 +145,7 @@ const Footer = () => {
                             <p className="time">время работы: 9:00-20:00</p>
                             <p className="phone">Заказать звонок</p>
                         </div>
-                        <p>opt.sultan@mail.ru <br />
+                        <p>opt.sultan@mail.ru<br />
                             На связи в любое время</p>
                         <div className="Icon__Box">
                             <img className='PayCard' src={Visa} alt="Visa" />
