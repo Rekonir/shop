@@ -6,6 +6,17 @@
         url("./assets/Inter-VariableFont_slnt\,wght.ttf") format("truetype"),
         url("./assets/Inter-VariableFont_slnt\,wght.ttf") format("svg");
 }
+
+$Gray: rgb(63, 78, 101);
+$Green: #1fd85d;
+$White: white;
+$Yel: #ffc85e;
+$Black: black;
+$SemiBlack: rgb(43, 28, 1);
+$GradYel: linear-gradient(90deg, rgba(255, 198, 80, 0.3) 0%, rgba(254, 202, 110, 0.3) 97.25%);
+$SemiWithe: #ededed;
+$SemiGrey: #5c6370;
+
 * {
     margin: 0;
     padding: 0;
@@ -34,14 +45,14 @@ p.tel {
     padding: 0;
 }
 p.description {
-    color: #3f4e65;
+    color: $Gray;
 }
 p.stock {
-    color: #1fd85d;
+    color: $Green;
     margin-bottom: 10px;
 }
 p.Page__text {
-    color: #3f4e65;
+    color: $Gray;
     margin-bottom: 50px;
 }
 p.phone {
@@ -61,14 +72,14 @@ p.phone {
     font-size: 16px;
     font-weight: 700;
     margin-bottom: 5px;
-    color: #000;
+    color: $Black;
     cursor: pointer;
 }
 p.thanks__text {
     font-weight: 300;
     font-size: 20px;
     line-height: 120%;
-    color: #3f4e65;
+    color: $Gray;
 }
 p.back {
     display: none;
@@ -110,11 +121,11 @@ h3.positions__subheader {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    background: white;
+    background: $White;
     .Header__Up {
         width: 100%;
         height: 60px;
-        border-bottom: 1px solid rgba(63, 78, 101, 0.3);
+        border-bottom: 1px solid rgba($Gray, 0.3);
         display: flex;
         justify-content: center;
         .Header__content {
@@ -178,7 +189,7 @@ h3.positions__subheader {
         justify-content: center;
         align-items: center;
         flex-direction: row;
-        border-bottom: 1px solid rgba(63, 78, 101, 0.3);
+        border-bottom: 1px solid rgba($Gray, 0.3);
         .btn__menu {
             display: none;
         }
@@ -214,7 +225,7 @@ h3.positions__subheader {
 .UpFilter {
     width: 100%;
     padding: 0 280px;
-    display: flex; //////////////////////////////////////////////
+    display: flex;
     justify-content: space-between;
     align-items: start;
     flex-direction: column;
@@ -255,10 +266,10 @@ h3.positions__subheader {
             padding: 9px;
             vertical-align: center;
             list-style-type: none;
-            background: white;
-            box-shadow: 0px 15px 70px -11px rgba(43, 28, 1, 0.04);
+            background: $White;
+            box-shadow: 0px 15px 70px -11px rgba($SemiBlack, 0.04);
             border-radius: 10px;
-            color: #3f4e65;
+            color: $Gray;
             font-size: 14px;
             line-height: 17px;
         }
@@ -279,6 +290,39 @@ h3.positions__subheader {
         align-items: start;
         flex-direction: column;
         gap: 20px;
+        .price__filter {
+            display: flex;
+            align-items: baseline;
+            justify-content: space-between;
+            flex-direction: column;
+            gap: 15px;
+            .price__box {
+                display: flex;
+                align-items: baseline;
+                justify-content: space-between;
+                flex-direction: row;
+                gap: 10px;
+                input[type="number"]::-webkit-outer-spin-button,
+                input[type="number"]::-webkit-inner-spin-button {
+                    -webkit-appearance: none;
+                }
+                input[type="number"],
+                input[type="number"]:hover,
+                input[type="number"]:focus {
+                    appearance: none;
+                    -moz-appearance: textfield;
+                }
+                input.price__input {
+                    padding: 4px 14px;
+                    gap: 10px;
+                    width: 100px;
+                    border: none;
+                    text-align: center;
+                    background: $GradYel;
+                    border-radius: 1000px;
+                }
+            }
+        }
         .check__filter {
             display: flex;
             justify-content: center;
@@ -302,13 +346,13 @@ h3.positions__subheader {
                     font-weight: 400;
                     font-size: 14px;
                     line-height: 90%;
-                    color: #3f4e65;
+                    color: $Gray;
                 }
             }
         }
         .check__filter:nth-child(3) {
             padding-bottom: 20px;
-            border-bottom: 1px dashed rgba(63, 78, 101, 0.3);
+            border-bottom: 1px dashed rgba($Gray, 0.3);
         }
     }
 
@@ -326,7 +370,7 @@ h3.positions__subheader {
         font-weight: 500;
         font-size: 12px;
         line-height: 150%;
-        color: #3f4e65;
+        color: $Gray;
         cursor: pointer;
     }
     .more::after {
@@ -345,14 +389,14 @@ h3.positions__subheader {
         }
         ul.positions {
             margin: 20px auto;
-            border-bottom: 1px dashed rgba(63, 78, 101, 0.3);
+            border-bottom: 1px dashed rgba($Gray, 0.3);
             li {
                 margin: 5px 0;
                 list-style-type: none;
                 font-weight: 400;
                 font-size: 14px;
                 line-height: 150%;
-                color: #3f4e65;
+                color: $Gray;
             }
             li:last-child {
                 margin-bottom: 20px;
@@ -372,7 +416,7 @@ h3.positions__subheader {
 .Catalog {
     width: 100%;
     margin: 0px 280px;
-    display: flex; ////////////////////////////////////////////
+    display: flex;
     justify-content: start;
     align-items: start;
     flex-direction: row;
@@ -437,7 +481,7 @@ h3.positions__subheader {
                 font-size: 14px;
                 line-height: 130%;
                 text-align: center;
-                color: #3f4e65;
+                color: $Gray;
                 margin-bottom: 20px;
                 cursor: pointer;
 
@@ -448,14 +492,14 @@ h3.positions__subheader {
                     width: 35px;
                     height: 35px;
                     border-radius: 50%;
-                    background: linear-gradient(90deg, rgba(255, 198, 80, 0.3) 0%, rgba(254, 202, 110, 0.3) 97.25%);
+                    background: $GradYel;
                     margin: -10px;
                     cursor: pointer;
                 }
             }
             .page__arrow {
                 border: none;
-                color: #ffc85e;
+                color: $Yel;
                 width: 9px;
                 height: 16px;
                 cursor: pointer;
@@ -466,7 +510,7 @@ h3.positions__subheader {
 .GoodsPage {
     width: 100%;
     margin: 0 0 60px 0;
-    display: flex; //////////////////////////////
+    display: flex;
     justify-content: start;
     align-items: start;
     flex-direction: column;
@@ -513,9 +557,9 @@ h3.positions__subheader {
                     height: 20px;
                 }
                 .btn {
-                    background: white;
+                    background: $White;
                     p {
-                        color: #3f4e65;
+                        color: $Gray;
                     }
                 }
             }
@@ -528,7 +572,7 @@ h3.positions__subheader {
                 flex-wrap: wrap;
                 gap: 15px;
                 padding-bottom: 20px;
-                border-bottom: 1px dashed rgba(63, 78, 101, 0.3);
+                border-bottom: 1px dashed rgba($Gray, 0.3);
                 margin-top: 25px;
             }
             .content:last-child {
@@ -540,7 +584,7 @@ h3.positions__subheader {
 .CartPage {
     width: 100%;
     padding: 0 280px;
-    display: flex; /////////////////////////////////////
+    display: flex;
     justify-content: start;
     align-items: start;
     flex-direction: column;
@@ -567,8 +611,8 @@ h3.positions__subheader {
         }
         .count {
             padding: 0 45px;
-            border-right: 1px dashed rgba(63, 78, 101, 0.2);
-            border-left: 1px dashed rgba(63, 78, 101, 0.2);
+            border-right: 1px dashed rgba($Gray, 0.2);
+            border-left: 1px dashed rgba($Gray, 0.2);
         }
         .price {
             display: inline-block;
@@ -576,7 +620,7 @@ h3.positions__subheader {
             font-size: 20px;
             line-height: 130%;
             padding: 0 45px;
-            border-right: 1px dashed rgba(63, 78, 101, 0.2);
+            border-right: 1px dashed rgba($Gray, 0.2);
         }
         .btn__del {
             margin-left: 40px;
@@ -594,15 +638,15 @@ h3.positions__subheader {
 .Thanks {
     text-decoration: none;
     position: fixed;
-    color: black;
+    color: $Black;
     top: 0;
     right: 0;
     bottom: 0;
     left: 0;
     width: 100vw;
     height: 100vh;
-    background: rgba(black, 0.5);
-    display: flex; //////////////////////////
+    background: rgba($Black, 0.5);
+    display: flex;
     justify-content: center;
     align-items: center;
     cursor: pointer;
@@ -610,7 +654,7 @@ h3.positions__subheader {
         position: relative;
         width: 735px;
         height: 424px;
-        background: #ffffff;
+        background: $White;
         border-radius: 8px;
         display: flex;
         justify-content: center;
@@ -626,7 +670,7 @@ h3.positions__subheader {
             position: absolute;
             top: 35px;
             right: 35px;
-            color: #ffc85e;
+            color: $Yel;
             border: none;
         }
     }
@@ -634,9 +678,9 @@ h3.positions__subheader {
 .admin__box {
     width: 100%;
     margin: 50px;
-    box-shadow: 0px 0px 10px 2px rgba(43, 28, 1, 0.7);
+    box-shadow: 0px 0px 10px 2px rgba($SemiBlack, 0.7);
     padding: 20px;
-    border: 1px solid rgba(43, 28, 1, 0.7);
+    border: 1px solid rgba($SemiBlack, 0.7);
     border-radius: 4px;
     display: flex;
     flex-direction: column;
@@ -649,7 +693,7 @@ h3.positions__subheader {
         flex-direction: row;
         justify-content: space-between;
         align-items: baseline;
-        border-bottom: 1px dashed rgba(43, 28, 1, 0.7);
+        border-bottom: 1px dashed rgba($SemiBlack, 0.7);
         padding: 5px;
         input {
             width: 60%;
@@ -660,8 +704,8 @@ h3.positions__subheader {
 }
 .Footer {
     padding: 70px 280px 120px 280px;
-    background: #3f4e65;
-    box-shadow: 0px 15px 70px -11px rgba(43, 28, 1, 0.04);
+    background: $Gray;
+    box-shadow: 0px 15px 70px -11px rgba($SemiBlack, 0.04);
     width: 100%;
     height: 500px;
     display: flex;
@@ -675,7 +719,7 @@ h3.positions__subheader {
         align-items: start;
         flex-direction: column;
         gap: 15px;
-        color: white;
+        color: $White;
         h3 {
             font-weight: 600;
             font-size: 20px;
@@ -750,15 +794,15 @@ h3.positions__subheader {
             display: inline-block;
             text-align: center;
             list-style-type: none;
-            background: white;
+            background: $White;
             font-size: 14px;
             line-height: 17px;
-            border-right: 1px dashed rgba(63, 78, 101, 0.3);
+            border-right: 1px dashed rgba($Gray, 0.3);
             padding: 0px 10px;
         }
         li:last-child {
             border: none;
-            color: rgba(63, 78, 101, 0.5);
+            color: rgba($Gray, 0.5);
         }
     }
 }
@@ -769,9 +813,9 @@ h3.positions__subheader {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    background: #ededed;
+    background: $SemiWithe;
     border-radius: 36px;
-    color: #5c6370;
+    color: $SemiGrey;
     padding: 0 20px;
     input {
         width: 210px;
@@ -780,10 +824,10 @@ h3.positions__subheader {
         flex-direction: row;
         justify-content: space-between;
         align-items: center;
-        background: #ededed;
+        background: $SemiWithe;
         border-radius: 36px;
         padding: 20px;
-        color: #5c6370;
+        color: $SemiGrey;
         border: none;
         margin-left: -20px;
     }
@@ -795,7 +839,7 @@ h3.positions__subheader {
     .inp__icon {
         width: 40px;
         height: 40px;
-        background: #ffc85e;
+        background: $Yel;
         border-radius: 50%;
         display: flex;
         justify-content: center;
@@ -844,7 +888,7 @@ h3.positions__subheader {
     width: 200px;
     height: 60px;
     padding: 10px auto;
-    background: #ffc85e;
+    background: $Yel;
     border-radius: 79px;
     display: flex;
     flex-direction: row;
@@ -854,7 +898,7 @@ h3.positions__subheader {
     cursor: pointer;
     p {
         text-decoration: none;
-        color: white;
+        color: $White;
         font-weight: 700;
 
         line-height: 17px;
@@ -881,12 +925,12 @@ h3.positions__subheader {
     flex-direction: row;
     font-weight: 700;
     font-size: 10px;
-    color: white;
-    background: #ffc85e;
+    color: $White;
+    background: $Yel;
     border-radius: 80px;
     text-align: center;
     text-transform: uppercase;
-    border: 0px solid black;
+    border: 0px solid $Black;
     gap: 5px;
     cursor: pointer;
     img {
@@ -904,7 +948,7 @@ h3.positions__subheader {
 .good__size {
     align-items: center;
     flex-direction: row;
-    color: #3f4e65;
+    color: $Gray;
     opacity: 0.6;
     font-size: 12px;
 }
@@ -923,7 +967,7 @@ h3.positions__subheader {
         padding: auto 14px;
         width: 34px;
         height: 23px;
-        background: linear-gradient(90deg, rgba(255, 198, 80, 0.3) 0%, rgba(254, 202, 110, 0.3) 97.25%);
+        background: $GradYel;
         border-radius: 100%;
         border: none;
         cursor: pointer;
@@ -943,13 +987,13 @@ h3.positions__subheader {
     display: flex;
     justify-content: center;
     align-items: center;
-    color: black;
+    color: $Black;
     gap: 28px;
     cursor: pointer;
     .Cart__img {
         position: relative;
-        border: 0px solid black;
-        background: white;
+        border: 0px solid $Black;
+        background: $White;
         cursor: pointer;
         img {
             width: 40px;
@@ -962,10 +1006,10 @@ h3.positions__subheader {
             display: flex;
             justify-content: center;
             align-items: center;
-            background: #ffc85e;
-            border: 3px solid #ffffff;
+            background: $Yel;
+            border: 3px solid $White;
             border-radius: 50%;
-            color: #ffffff;
+            color: $White;
             font-weight: 700;
             font-size: 12px;
             top: -10px;
@@ -1000,7 +1044,7 @@ h3.positions__subheader {
         top: -10px;
         left: -37px;
         border-radius: 50%;
-        background: #ffca65;
+        background: $Yel;
         opacity: 0.5;
     }
     p.stock {
@@ -1015,7 +1059,7 @@ h3.positions__subheader {
         font-weight: 300;
         font-size: 12px;
         line-height: 120%;
-        color: #3f4e65;
+        color: $Gray;
     }
     h1.Page__header {
         font-weight: 500;
@@ -1050,7 +1094,7 @@ h3.positions__subheader {
         top: -4px;
         right: 0;
         border-radius: 50%;
-        background: #ffca65;
+        background: $Yel;
         opacity: 0.5;
     }
     h2.price {
@@ -1076,7 +1120,7 @@ h3.positions__subheader {
                 display: flex;
                 justify-content: center;
                 align-items: center;
-                background: #ffc85e;
+                background: $Yel;
                 border-radius: 50%;
                 padding: 12px;
                 img {
@@ -1099,26 +1143,26 @@ h3.positions__subheader {
             display: flex;
             justify-content: center;
             align-items: center;
-            color: black;
+            color: $Black;
 
             .btn,
             .inp__box {
                 gap: 5px;
                 width: 50%;
                 padding: 13px auto;
-                background: white;
-                border: 1px solid rgba(63, 78, 101, 0.2);
-                background: white;
+                background: $White;
+                border: 1px solid rgba($Gray, 0.2);
+                background: $White;
                 border-radius: 0;
                 .inp__icon {
-                    background: white;
+                    background: $White;
                     text-align: center;
                     display: flex;
                     justify-content: baseline;
                     align-items: center;
                 }
                 p {
-                    color: black;
+                    color: $Black;
                 }
             }
         }
@@ -1135,11 +1179,11 @@ h3.positions__subheader {
             flex-direction: column;
             gap: 15px;
             .sort {
-                display: flex; /////////////////////////////////
+                display: flex;
             }
         }
         ul.Filter__list {
-            display: flex; //////////////////////////////
+            display: flex;
             flex-direction: column;
             align-items: start;
             gap: 5;
@@ -1154,7 +1198,7 @@ h3.positions__subheader {
         padding: 15px;
         margin: 0;
         width: 100%;
-        display: flex; //////////////////
+        display: flex;
         margin-top: 35px;
 
         h3.positions__subheader {
@@ -1177,7 +1221,7 @@ h3.positions__subheader {
     }
     .Page__goods {
         width: 100%;
-        display: flex; //////////////////////////////
+        display: flex;
         .Goods {
             justify-content: center;
         }
@@ -1254,8 +1298,8 @@ h3.positions__subheader {
             align-items: baseline;
             flex-wrap: wrap;
             gap: 10px;
-            border-top: 1px dashed rgba(63, 78, 101, 0.2);
-            border-bottom: 1px dashed rgba(63, 78, 101, 0.2);
+            border-top: 1px dashed rgba($Gray, 0.2);
+            border-bottom: 1px dashed rgba($Gray, 0.2);
             img {
                 margin: auto;
                 max-width: 290px;
@@ -1275,13 +1319,13 @@ h3.positions__subheader {
             }
             .count {
                 padding: 0 7%;
-                border-left: 0px dashed rgba(63, 78, 101, 0.2);
-                border-right: 0px dashed rgba(63, 78, 101, 0.2);
+                border-left: 0px dashed rgba($Gray, 0.2);
+                border-right: 0px dashed rgba($Gray, 0.2);
             }
             .price {
                 font-size: 16px;
                 padding: 0 7%;
-                border-left: 1px dashed rgba(63, 78, 101, 0.2);
+                border-left: 1px dashed rgba($Gray, 0.2);
             }
             .btn__del {
                 width: 60px;
@@ -1311,7 +1355,7 @@ h3.positions__subheader {
     .Footer {
         height: 100%;
         padding: 15px;
-        box-shadow: 0px 15px 70px -11px rgba(43, 28, 1, 0.04);
+        box-shadow: 0px 15px 70px -11px rgba($SemiBlack, 0.04);
         .Mobile__footer {
             width: 100%;
             display: flex;
@@ -1319,7 +1363,7 @@ h3.positions__subheader {
             align-items: start;
             flex-direction: column;
             gap: 15px;
-            color: white;
+            color: $White;
 
             .Mobile__footer__box {
                 width: 100%;

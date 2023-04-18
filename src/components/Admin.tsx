@@ -15,12 +15,13 @@ const Admin: FC = () => {
                 <h1 className='Page__header'> Режим Админа </h1>
                 <div className='Goods'>
                     <AdminBox />
+                    
                     {chengeCatalog.map(goods => (
                         <GoodsAdminItem goods={goods} key={goods.id} />
                     ))}
+                    
                 </div>
             </div>
-
         </div>
     );
 

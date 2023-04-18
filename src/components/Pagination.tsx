@@ -1,14 +1,12 @@
 import React, { FC } from 'react';
 import { IPagination } from './type';
 
-const Pagination: FC<IPagination> = ({ goodsPerPage, totalGoods, paginate, currentPage }) => {
-
+const Pagination: FC<IPagination> = ({ maxPage, paginate, currentPage }) => {
+    
     const pageNum = []
-    for (let i = 1; i <= Math.ceil(totalGoods / goodsPerPage); i++) {
+    for (let i = 1; i <= maxPage; i++) {
         pageNum.push(i)
     }
-
-
 
     return (
         <div className="Page__num">

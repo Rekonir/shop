@@ -1,16 +1,7 @@
 import React, { FC } from 'react';
-import LogoImg from '../assets/logo.svg'
-import LogoImg1 from '../assets/logo1.svg'
-import LogoImgC from '../assets/logo c.svg'
-import LogoImgY from '../assets/logo y.svg'
-import LogoImgL from '../assets/logo l.svg'
-import LogoImgT from '../assets/logo t.svg'
-import LogoImgA from '../assets/logo a.svg'
-import LogoImgN from '../assets/logo n.svg'
 import btnImg from '../assets/btn icon.png'
 import btnImgBlack from '../assets/btn icon black.png'
 import SearchIconBlack from '../assets/search icon black.svg'
-
 import CallImg from '../assets/call img.png'
 import PriceImg from '../assets/price-list.svg'
 import BurgMenu from '../assets/burgerMenu.svg'
@@ -18,6 +9,7 @@ import Cart from './Cart';
 import { useDispatch } from 'react-redux';
 import Search from './Search';
 import { Link } from 'react-router-dom';
+import BlackLogoBox from './BlackLogoBox';
 
 
 
@@ -25,15 +17,12 @@ import { Link } from 'react-router-dom';
 const Header: FC = () => {
 
     const dispatch = useDispatch()
-    const ShowCatalogBtn = () => {
-        dispatch({ type: "CatatlodShow" });
-    }
 
     const ShowAdmin = () => {
         dispatch({ type: "ShowAdmin" })
     }
 
-    module.exports = ShowAdmin
+
     const toggleSide = () => {
         dispatch({ type: "toggleSide" })
     }
@@ -61,23 +50,10 @@ const Header: FC = () => {
                     <Link to="/sidemenu" className="btn__menu" onClick={toggleSide}>
                         <img src={BurgMenu} alt="Меню" />
                     </Link>
-                    <Link to='/' className="logo__box" onClick={ShowCatalogBtn} data-testid='CatalogBtn'>
-                        <img className='logo' src={LogoImg} alt='логотип'></img>
-                        <img className='logo1' src={LogoImg1} alt='логотип'></img>
-                        <img className='logo2' src={LogoImg1} alt='логотип'></img>
-                        <div className="logo__name">
-                            <img className='logo' src={LogoImgC} alt='логотип'></img>
-                            <img className='logo' src={LogoImgY} alt='логотип'></img>
-                            <img className='logo' src={LogoImgL} alt='логотип'></img>
-                            <img className='logo' src={LogoImgT} alt='логотип'></img>
-                            <img className='logo' src={LogoImgA} alt='логотип'></img>
-                            <img className='logo' src={LogoImgN} alt='логотип'></img>
-                        </div>
-                    </Link>
+                    <BlackLogoBox />
                     <Link to='/admin' className="btn" onClick={ShowAdmin}>
                         <p>Каталог</p>
                         <img src={btnImg} alt="" />
-
                     </Link>
                     <Search />
                     <div className="Header__call">

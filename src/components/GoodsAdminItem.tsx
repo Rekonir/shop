@@ -8,15 +8,13 @@ import { Link } from 'react-router-dom';
 const GoodsAdminItem: FC<IGoodsItem> = ({ goods }) => {
 
     const dispatch = useDispatch()
-
-
     const GoodsPageShow = () => {
         dispatch({ type: "GoodsPageShow", payload: goods.id })
     }
-
     const removeDataID = (id: string) => {
         dispatch(removeFromData(id))
     }
+    
     return (
         <div className='Good__position' key={goods.id} data-testid='GoodsAdmin'>
             <img className='good__img' src={goods.img} alt={goods.name} />

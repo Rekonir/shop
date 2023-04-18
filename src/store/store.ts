@@ -22,6 +22,8 @@ const defShow: showType = {
     showFilterUl6: true,
     showFilterUl7: true,
     showFilterUl8: true,
+    CheckBoxList: ['Россия', 'Франция', 'Южная Корея'],
+    priceFilter: [0, 9999999]
 
 }
 export const storeReducer = (state = defShow, action: any) => {
@@ -133,8 +135,16 @@ export const storeReducer = (state = defShow, action: any) => {
             return { ...state, chengeCatalog: state.chengeCatalog }
         }
 
-        case 'FilterUl1': {
+        case "CangeCheckBoxList": {
+            const NewCheckBoxList =  ['Россия', 'Франция', 'Южная Корея'].filter(item => item === action.payload)
+            return { ...state, CheckBoxList: NewCheckBoxList }
+        }
+        case "allCheckbox": {
+            const NewCheckBoxList =  ['Россия', 'Франция', 'Южная Корея']
+            return { ...state, CheckBoxList: NewCheckBoxList }
+        }
 
+        case 'FilterUl1': {
             return { ...state, chengeCatalog: state.chengeCatalog.filter(item => item.usePlace.includes('Уход за телом')), showFilterUl1: true, showFilterUl2: false, showFilterUl3: false, showFilterUl4: false, showFilterUl5: false, showFilterUl6: false, showFilterUl7: false, showFilterUl8: false, }
         }
         case 'FilterUl2': {

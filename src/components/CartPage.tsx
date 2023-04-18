@@ -10,10 +10,6 @@ import { removeFromCart } from '../store/cart/action';
 
 const CartPage: FC = () => {
     const inCart= true
-
-    // const CartShow = useSelector<showType>(state => state.CartShow)
-    // const ShowClass = CartShow ? 'show' : 'hide'
-
     const State: any = useSelector<showType>(state => state)
     const CartData = State.CartPool
     const Total = CartData.reduce((acc: number, item: any) => acc + item.price * item.counter, 0)
@@ -27,8 +23,6 @@ const CartPage: FC = () => {
     const removeHandler = (id: string) => {
         dispatch(removeFromCart(id))
     }
-
-
     return (
         <div className={`CartPage ${ShowClass}`}>
             <div className="map__nav">
@@ -60,16 +54,14 @@ const CartPage: FC = () => {
                     </div>
                 )
             })}
+            
             <div className="Cart__total">
                 <Link to='/' className="btn" onClick={ShowThxBtn}>
                     <p>Оформить заказ</p>
                 </Link>
                 <h2 className="price" data-testid='TotalPrice'>{Total} ₽</h2>
-
             </div>
-
         </div>
-
     );
 };
 

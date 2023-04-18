@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, useState } from 'react';
 import brend1 from '../assets/brend1.svg'
 import brend2 from '../assets/brend2.svg'
 import brend3 from '../assets/brend3.svg'
@@ -7,10 +7,13 @@ import brend5 from '../assets/brend5.svg'
 import SearchIcon from '../assets/saerch icon.svg'
 import Del from '../assets/del.svg'
 import GoodsData from '../GoodsData.json'
-import { checkedState, showType } from './type';
+import { showType } from './type';
 import { useDispatch, useSelector } from 'react-redux';
+import Search from './Search';
+import Checkbox from './Checkbox';
 
 export let FilterGoodsData = GoodsData
+
 
 const DelFilter = () => {
     const Rus = document.getElementById('Россия') as HTMLInputElement | null;
@@ -33,66 +36,35 @@ const DelFilter = () => {
 
 const SideMenu: FC = () => {
 
-    const Rus = document.getElementById('Россия') as HTMLInputElement | null;
-    if (Rus != null) {
-        Rus.checked = true;
-    }
-    const Fr = document.getElementById('Франция') as HTMLInputElement | null;
-    if (Fr != null) {
-        Fr.checked = true;
-    }
-    const Kor = document.getElementById('Южная Корея') as HTMLInputElement | null;
-    if (Kor != null) {
-        Kor.checked = true;
-    }
+    const State: any = useSelector<showType>(state => state)
+    const CheckBoxList = State.CheckBoxList
 
-    const checkedStates: checkedState = {
-        RusChecked: Rus?.checked,
-        KorChecked: Kor?.checked,
-        FrChecked: Fr?.checked
-    }
-    const RusCheck = () => {
-        checkedStates.RusChecked = !checkedStates.RusChecked
-        console.log(checkedStates.RusChecked)
+    const [MinPrice, setMinPrice] = useState(0)
+    const [MaxPrice, setMaxPrice] = useState(99999999)
 
-    }
-    const KorCheck = () => {
-        checkedStates.KorChecked = !checkedStates.KorChecked
-        console.log(checkedStates.KorChecked)
-
-    }
-    const FrCheck = () => {
-        checkedStates.FrChecked = !checkedStates.FrChecked
-        console.log(checkedStates.FrChecked)
-
-    }
     const Filter = () => {
+        // const FilterGoods: Array<IGoods> = []
+        const goods = GoodsData
 
-        const FilterGoods: Array<any> = []
-        const checkedFilter = (chekedPosition) => {
-            const goods = GoodsData
-            for (let i = 0; i < goods.length; i++) {
-                if (goods[i].maker === chekedPosition) {
-                    FilterGoods.push(goods[i])
-                }
-            }
+        for (let i = 0; i < CheckBoxList.length; i++) {
+            const box = CheckBoxList.map(boxName => (
+                <Checkbox boxName={boxName} key={boxName} />
+            ))
+            console.log(box)
         }
 
-        checkedStates.RusChecked ? checkedFilter('Россия') : console.log('RusUnChecked')
-        checkedStates.FrChecked ? checkedFilter('Франция') : console.log('FrUnChecked')
-        checkedStates.KorChecked ? checkedFilter('Южная Корея') : console.log('KorUnChecked')
-
-        FilterGoods.length > 0 ? FilterGoodsData = FilterGoods : FilterGoodsData = GoodsData
-
-
-
+        FilterGoodsData = goods.filter(item => item.price >= MinPrice && item.price <= MaxPrice)
         chengeCatalog()
         return FilterGoodsData
+
     }
 
     const dispatch = useDispatch()
     const chengeCatalog = () => {
         dispatch({ type: "chengeCatalog" });
+    }
+    const allCheckbox = () => {
+        dispatch({ type: "allCheckbox" });
     }
 
     const FilterUl1 = () => {
@@ -146,22 +118,31 @@ const SideMenu: FC = () => {
     const FilterUlAll = () => {
         dispatch({ type: "FilterUlAll" })
     }
+
     return (
-        <div className={`SideMenu`}>
+        <div className='SideMenu'>
             <div className="SideMenu__filter">
                 <h3 className="positions__subheader">
                     ПОДБОР ПО ПАРАМЕТРАМ
                 </h3>
-                <p> Цена </p>
+                <div className="price__filter">
+                    <h4 className="positions__subheader"> Цена ₽ </h4>
+                    <div className="price__box">
+                        <input className='price__input' type="number" placeholder='0' onChange={e => { setMinPrice(+e.target.value) }} />
+                        -
+                        <input className='price__input' type="number" placeholder='999999' onChange={e => { setMaxPrice(+e.target.value) }} />
+                    </div>
+                </div>
+
                 <div className="check__filter">
                     <h4 className="positions__subheader"> Производитель </h4>
-                    <div className="inp__box">
-                        <input type='text' placeholder="Поиск..." />
-                        <div className="inp__icon">
-                            <img src={SearchIcon} alt="Поиск" />
-                        </div>
-                    </div>
-                    <div className="filter">
+                    <Search />
+
+                    {CheckBoxList.map(boxName => (
+                        <Checkbox boxName={boxName} key={boxName} />
+                    ))}
+
+                    {/* <div className="filter">
                         <input type="checkbox" name="maker" id='Россия' />
                         <label htmlFor='Россия' onClick={RusCheck}>Россия</label>
                     </div>
@@ -172,8 +153,8 @@ const SideMenu: FC = () => {
                     <div className="filter">
                         <input type="checkbox" name="maker" id='Южная Корея' />
                         <label htmlFor='Южная Корея' onClick={KorCheck}>Южная Корея</label>
-                    </div>
-                    <div className='more'>Показать все</div>
+                    </div> */}
+                    <div className='more' onClick={allCheckbox}>Показать все</div>
                 </div>
                 <div className="check__filter">
                     <h4 className="positions__subheader">Бренд</h4>

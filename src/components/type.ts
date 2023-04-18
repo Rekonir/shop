@@ -30,6 +30,8 @@ export type showType = {
     chengeCatalog?: Array<IGoods>
     CartPool?: Array<IGoods>
     ShowAdmin?: boolean,
+    CheckBoxList?: Array<string>,
+    priceFilter?: [number, number]
     showFilterUl1?: boolean,
     showFilterUl2?: boolean,
     showFilterUl3?: boolean,
@@ -57,8 +59,11 @@ export interface IQuantity {
 export type TypeSetState<T> = Dispatch<SetStateAction<T>>
 
 export interface IPagination {
-    goodsPerPage: number,
-    totalGoods: number,
+    maxPage: number,
     paginate: any,
     currentPage: number
+}
+export interface ICheckbox {
+    boxName: string,
+
 }

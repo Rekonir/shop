@@ -10,15 +10,10 @@ import Pagination from './Pagination';
 
 const Catalog: FC = () => {
 
-    // eslint-disable-next-line react-hooks/rules-of-hooks
     const State: any = useSelector<showType>(state => state)
     const chengeCatalog = State.chengeCatalog
-    
-    const CatatlodShow = useSelector<showType>(state => state.CatatlodShow)
-    const ShowClass = CatatlodShow ? 'show' : 'hide'
-
-    const PageShow = useSelector<showType>(state => state.GoodsPageShow)
-    const PageShowClass = PageShow ? 'show' : 'hide'
+    const ShowClass = State.CatatlodShow ? 'show' : 'hide'
+    const PageShowClass = State.GoodsPageShow ? 'show' : 'hide'
 
     const [currentPage, setCurrentPage] = useState(1)
     const [goodsPerPage] = useState(10)
@@ -40,6 +35,7 @@ const Catalog: FC = () => {
             <SideMenu />
             <div className="Page__goods">
                 <div className={`Goods ${PageShowClass}`}>
+
                     {currentGoods.map(goods => (
                         <GoodsItem goods={goods} key={goods.id} />
                     ))}
@@ -47,7 +43,7 @@ const Catalog: FC = () => {
                 </div>
                 <div className={`page__box ${PageShowClass}`}>
                     <button className="page__arrow" onClick={lastPage}> {'<'} </button>
-                    <Pagination goodsPerPage={goodsPerPage} totalGoods={chengeCatalog.length} currentPage={currentPage} paginate={paginate} />
+                    <Pagination maxPage={maxPage}  currentPage={currentPage} paginate={paginate} />
                     <button className="page__arrow" onClick={nextPage}> {'>'} </button>
                 </div>
 
