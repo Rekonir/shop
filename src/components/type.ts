@@ -42,6 +42,9 @@ export type showType = {
     showFilterUl6?: boolean,
     showFilterUl7?: boolean,
     showFilterUl8?: boolean,
+    FilterUl?:string,
+    AllUl?:Array<string>,
+    ChooseUl?:Array<string>,
 }
 export type checkedState = {
 

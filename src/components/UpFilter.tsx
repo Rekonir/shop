@@ -6,6 +6,7 @@ import { showType } from './type';
 
 const UpFilter: FC = () => {
 
+    const State: any = useSelector<showType>(state => state)
 
     const dispatch = useDispatch()
 
@@ -18,58 +19,15 @@ const UpFilter: FC = () => {
     }
     const UpFilterShow = useSelector<showType>(state => state.UpFilterShow)
     const ShowClass = UpFilterShow ? 'show' : 'hide'
-
-    const FilterUl1 = () => {
-        dispatch({ type: "FilterUl1" })
-    }
-    const FilterUl1Show = useSelector<showType>(state => state.showFilterUl1)
-    const ShowClassUl1 = FilterUl1Show ? 'showUl' : 'hide'
-
-    const FilterUl2 = () => {
-        dispatch({ type: "FilterUl2" })
-    }
-    const FilterUl2Show = useSelector<showType>(state => state.showFilterUl2)
-    const ShowClassUl2 = FilterUl2Show ? 'showUl' : 'hide'
-
-    const FilterUl3 = () => {
-        dispatch({ type: "FilterUl3" })
-    }
-    const FilterUl3Show = useSelector<showType>(state => state.showFilterUl3)
-    const ShowClassUl3 = FilterUl3Show ? 'showUl' : 'hide'
-
-    const FilterUl4 = () => {
-        dispatch({ type: "FilterUl4" })
-    }
-    const FilterUl4Show = useSelector<showType>(state => state.showFilterUl4)
-    const ShowClassUl4 = FilterUl4Show ? 'showUl' : 'hide'
-
-    const FilterUl5 = () => {
-        dispatch({ type: "FilterUl5" })
-    }
-    const FilterUl5Show = useSelector<showType>(state => state.showFilterUl5)
-    const ShowClassUl5 = FilterUl5Show ? 'showUl' : 'hide'
-
-    const FilterUl6 = () => {
-        dispatch({ type: "FilterUl6" })
-    }
-    const FilterUl6Show = useSelector<showType>(state => state.showFilterUl6)
-    const ShowClassUl6 = FilterUl6Show ? 'showUl' : 'hide'
-
-    const FilterUl7 = () => {
-        dispatch({ type: "FilterUl7" })
-    }
-    const FilterUl7Show = useSelector<showType>(state => state.showFilterUl7)
-    const ShowClassUl7 = FilterUl7Show ? 'showUl' : 'hide'
-
-    const FilterUl8 = () => {
-        dispatch({ type: "FilterUl8" })
-    }
-    const FilterUl8Show = useSelector<showType>(state => state.showFilterUl8)
-
-    const ShowClassUl8 = FilterUl8Show ? 'showUl' : 'hide'
     const FilterUlAll = () => {
         dispatch({ type: "FilterUlAll" })
     }
+    const FilterUl = (e) => {
+        const targetId = e.target.id
+        dispatch({ type: 'FilterUl', payload: { targetId } })
+    }
+    const IdsUlShow = State.ChooseUl.length === 0 ? State.AllUl : State.ChooseUl
+
 
     return (
         <div className={`UpFilter ${ShowClass}`}>
@@ -96,21 +54,21 @@ const UpFilter: FC = () => {
             </div >
 
             <ul className="Filter__list">
-                <li className={`${ShowClassUl1}`} onClick={FilterUl1}>Уход
+                <li className={IdsUlShow.includes('Уход за телом') ? 'showUl' : 'hide'} id='Уход за телом' onClick={FilterUl}>Уход
                     за телом</li>
-                <li className={`${ShowClassUl2}`} onClick={FilterUl2}>Уход
+                <li className={IdsUlShow.includes('Уход за руками') ? 'showUl' : 'hide'} id='Уход за руками' onClick={FilterUl}>Уход
                     за руками</li>
-                <li className={`${ShowClassUl3}`} onClick={FilterUl3}>Уход
+                <li className={IdsUlShow.includes('Уход за ногами') ? 'showUl' : 'hide'} id='Уход за ногами' onClick={FilterUl}>Уход
                     за ногами</li>
-                <li className={`${ShowClassUl4}`} onClick={FilterUl4}>Уход
+                <li className={IdsUlShow.includes('Уход за лицом') ? 'showUl' : 'hide'} id='Уход за лицом' onClick={FilterUl}>Уход
                     за лицом</li>
-                <li className={`${ShowClassUl5}`} onClick={FilterUl5}>Уход
+                <li className={IdsUlShow.includes('Уход за волосами') ? 'showUl' : 'hide'} id='Уход за волосами' onClick={FilterUl}>Уход
                     за волосами</li>
-                <li className={`${ShowClassUl6}`} onClick={FilterUl6}>Средства
+                <li className={IdsUlShow.includes('Средства для загара') ? 'showUl' : 'hide'} id='Средства для загара' onClick={FilterUl}>Средства
                     для загара</li>
-                <li className={`${ShowClassUl7}`} onClick={FilterUl7}>Средства
+                <li className={IdsUlShow.includes('Средства для бритья') ? 'showUl' : 'hide'} id='Средства для бритья' onClick={FilterUl}>Средства
                     для бритья</li>
-                <li className={`${ShowClassUl8}`} onClick={FilterUl8}>Подарочные
+                <li className={IdsUlShow.includes('Подарочные наборы') ? 'showUl' : 'hide'} id='Подарочные наборы' onClick={FilterUl}>Подарочные
                     наборы</li>
                 <li className="showUl" onClick={FilterUlAll}>Вся
                     продукция</li>

@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react';
+import React, { FC } from 'react';
 import btnImg from '../assets/btn icon.png'
 import btnImgBlack from '../assets/btn icon black.png'
 import SearchIconBlack from '../assets/search icon black.svg'
@@ -21,8 +21,6 @@ const Header: FC = () => {
     const ShowAdmin = () => {
         dispatch({ type: "ShowAdmin" })
     }
-
-    const [check, setCheckBoxList] = useState('')
 
     const toggleSide = () => {
         dispatch({ type: "toggleSide" })
@@ -56,7 +54,7 @@ const Header: FC = () => {
                         <p>Каталог</p>
                         <img src={btnImg} alt="" />
                     </Link>
-                    {/* <Search check={check} setCheckBoxList={setCheckBoxList}/> */}
+                    <Search />
 
                     <div className="Header__call">
                         <div className="call__text">

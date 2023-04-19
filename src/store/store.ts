@@ -28,7 +28,10 @@ const defShow: showType = {
         'Франция': false,
         'Южная Корея': false
     },
-    FilterDelState: false
+    FilterDelState: false,
+    FilterUl: "",
+    AllUl: [`Уход за телом`, 'Уход за руками', 'Уход за ногами', 'Уход за лицом', 'Уход за волосами', 'Средства для загара', 'Средства для бритья', 'Подарочные наборы'],
+    ChooseUl: []
 
 }
 
@@ -180,32 +183,15 @@ export const storeReducer = (state = defShow, action: any) => {
             return { ...state, FilterDelState: false }
         }
 
-        case 'FilterUl1': {
-            return { ...state, chengeCatalog: state.chengeCatalog.filter(item => item.usePlace.includes('Уход за телом')), showFilterUl1: true, showFilterUl2: false, showFilterUl3: false, showFilterUl4: false, showFilterUl5: false, showFilterUl6: false, showFilterUl7: false, showFilterUl8: false, }
-        }
-        case 'FilterUl2': {
-            return { ...state, chengeCatalog: state.chengeCatalog.filter(item => item.usePlace.includes('Уход за рукам')), showFilterUl2: true, showFilterUl1: false, showFilterUl3: false, showFilterUl4: false, showFilterUl5: false, showFilterUl6: false, showFilterUl7: false, showFilterUl8: false, }
-        }
-        case 'FilterUl3': {
-            return { ...state, chengeCatalog: state.chengeCatalog.filter(item => item.usePlace.includes('Уход за ногами')), showFilterUl3: true, showFilterUl2: false, showFilterUl1: false, showFilterUl4: false, showFilterUl5: false, showFilterUl6: false, showFilterUl7: false, showFilterUl8: false, }
-        }
-        case 'FilterUl4': {
-            return { ...state, chengeCatalog: state.chengeCatalog.filter(item => item.usePlace.includes('Уход за лицом')), showFilterUl4: true, showFilterUl2: false, showFilterUl3: false, showFilterUl1: false, showFilterUl5: false, showFilterUl6: false, showFilterUl7: false, showFilterUl8: false, }
-        }
-        case 'FilterUl5': {
-            return { ...state, chengeCatalog: state.chengeCatalog.filter(item => item.usePlace.includes('Уход за волосами')), showFilterUl5: true, showFilterUl2: false, showFilterUl3: false, showFilterUl4: false, showFilterUl1: false, showFilterUl6: false, showFilterUl7: false, showFilterUl8: false, }
-        }
-        case 'FilterUl6': {
-            return { ...state, chengeCatalog: state.chengeCatalog.filter(item => item.usePlace.includes('Средства для загара')), showFilterUl6: true, showFilterUl2: false, showFilterUl3: false, showFilterUl4: false, showFilterUl5: false, showFilterUl1: false, showFilterUl7: false, showFilterUl8: false, }
-        }
-        case 'FilterUl7': {
-            return { ...state, chengeCatalog: state.chengeCatalog.filter(item => item.usePlace.includes('Средства для бритья')), showFilterUl7: true, showFilterUl2: false, showFilterUl3: false, showFilterUl4: false, showFilterUl5: false, showFilterUl6: false, showFilterUl1: false, showFilterUl8: false, }
-        }
-        case 'FilterUl8': {
-            return { ...state, chengeCatalog: state.chengeCatalog.filter(item => item.usePlace.includes('Подарочные наборы')), showFilterUl8: true, showFilterUl2: false, showFilterUl3: false, showFilterUl4: false, showFilterUl5: false, showFilterUl6: false, showFilterUl7: false, showFilterUl1: false, }
+        case 'FilterUl': {
+            const { targetId } = action.payload
+            state.ChooseUl.includes(state.AllUl.filter(item => item.includes(targetId))[0]) ? console.log('') : state.ChooseUl.push(state.AllUl.filter(item => item.includes(targetId))[0])
+            return { ...state, chengeCatalog: state.chengeCatalog.filter(item => item.usePlace.includes(targetId)), ChooseUl: state.ChooseUl }
+
         }
         case 'FilterUlAll': {
-            return { ...state, chengeCatalog: GoodsData, showFilterUl8: true, showFilterUl2: true, showFilterUl3: true, showFilterUl4: true, showFilterUl5: true, showFilterUl6: true, showFilterUl7: true, showFilterUl1: true, }
+            return { ...state, chengeCatalog: GoodsData, ChooseUl: [] }
+
         }
         default:
             return state

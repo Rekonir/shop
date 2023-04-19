@@ -845,6 +845,11 @@ h3.positions__subheader {
         justify-content: center;
         align-items: center;
         cursor: pointer;
+        .btn{
+            width: 40px;
+            height: 40px;
+            border: none
+        }
     }
 }
 .logo__box {
