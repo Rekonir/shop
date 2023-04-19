@@ -32,6 +32,8 @@ export type showType = {
     ShowAdmin?: boolean,
     CheckBoxList?: Array<string>,
     priceFilter?: [number, number]
+    CheckBox?: Object,
+    FilterDelState?: boolean,
     showFilterUl1?: boolean,
     showFilterUl2?: boolean,
     showFilterUl3?: boolean,
@@ -40,8 +42,6 @@ export type showType = {
     showFilterUl6?: boolean,
     showFilterUl7?: boolean,
     showFilterUl8?: boolean,
-
-
 }
 export type checkedState = {
 

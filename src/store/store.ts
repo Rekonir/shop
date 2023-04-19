@@ -1,5 +1,4 @@
 import { createStore } from "redux";
-import { FilterGoodsData } from "../components/SideMenu";
 import { showType } from "../components/type";
 import GoodsData from '../GoodsData.json'
 
@@ -23,9 +22,16 @@ const defShow: showType = {
     showFilterUl7: true,
     showFilterUl8: true,
     CheckBoxList: ['Россия', 'Франция', 'Южная Корея'],
-    priceFilter: [0, 9999999]
+    priceFilter: [0, 9999999],
+    CheckBox: {
+        'Россия': false,
+        'Франция': false,
+        'Южная Корея': false
+    },
+    FilterDelState: false
 
 }
+
 export const storeReducer = (state = defShow, action: any) => {
     switch (action.type) {
 
@@ -50,8 +56,11 @@ export const storeReducer = (state = defShow, action: any) => {
                 ...state, UpFilterShow: false
             }
         case "chengeCatalog":
+            let { FilterGoodsData } = action.payload
+            state.chengeCatalog = FilterGoodsData
+
             return {
-                ...state, chengeCatalog: state.chengeCatalog = FilterGoodsData,
+                ...state, chengeCatalog: state.chengeCatalog
             }
         case "SotrNameUp":
             return {
@@ -136,12 +145,39 @@ export const storeReducer = (state = defShow, action: any) => {
         }
 
         case "CangeCheckBoxList": {
-            const NewCheckBoxList =  ['Россия', 'Франция', 'Южная Корея'].filter(item => item === action.payload)
+            const NewCheckBoxList = ['Россия', 'Франция', 'Южная Корея'].filter(item => item === action.payload)
             return { ...state, CheckBoxList: NewCheckBoxList }
         }
+        case 'CheckBox': {
+            const { boxName, NewStateCheckBox } = action.payload
+            console.log(action.payload)
+
+            function updateCheckBoxValue(obj, key, newValue) {
+                if (obj.hasOwnProperty(key)) {
+                    obj[key] = newValue;
+                    return;
+                }
+                for (var prop in obj) {
+                    if (obj.hasOwnProperty(prop)) {
+                        updateCheckBoxValue(obj[prop], key, newValue);
+                    }
+                }
+            }
+            updateCheckBoxValue(state.CheckBox, boxName, NewStateCheckBox)
+            console.log(state.CheckBox)
+            return { ...state, CheckBox: state.CheckBox }
+        }
         case "allCheckbox": {
-            const NewCheckBoxList =  ['Россия', 'Франция', 'Южная Корея']
+            const NewCheckBoxList = ['Россия', 'Франция', 'Южная Корея']
             return { ...state, CheckBoxList: NewCheckBoxList }
+        }
+        case 'DelFilter': {
+            const NewCheckBoxList = ['Россия', 'Франция', 'Южная Корея']
+
+            return { ...state, FilterDelState: true, CheckBoxList: NewCheckBoxList }
+        }
+        case 'rebootDelState': {
+            return { ...state, FilterDelState: false }
         }
 
         case 'FilterUl1': {

@@ -1,12 +1,28 @@
 import React, { FC, useState } from 'react';
-import { ICheckbox } from './type';
+import { ICheckbox, showType } from './type';
+import { useDispatch, useSelector } from 'react-redux';
+
+
+
 
 const Checkbox: FC<ICheckbox> = ({ boxName }) => {
     const [checkState, setCheck] = useState(false)
+    const State: showType = useSelector(state => state)
 
+    const dispatch = useDispatch()
+    const check = () => {
+        setCheck(!checkState)
+        let NewStateCheckBox = !checkState
+        dispatch({ type: 'CheckBox', payload: { boxName, NewStateCheckBox } })
+    }
+    setTimeout(() => {
+        if (State.FilterDelState) {
+            setCheck(false)
+        }
+    })
     return (
         <div className="filter">
-            <input type="checkbox" name="maker" id={boxName} checked={checkState} onClick={() => { setCheck(!checkState) }} />
+            <input type="checkbox" name="maker" id={boxName} checked={checkState} onClick={check} />
             <label htmlFor={boxName}>{boxName}</label>
         </div>
     );

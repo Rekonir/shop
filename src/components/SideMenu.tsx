@@ -7,62 +7,56 @@ import brend5 from '../assets/brend5.svg'
 import SearchIcon from '../assets/saerch icon.svg'
 import Del from '../assets/del.svg'
 import GoodsData from '../GoodsData.json'
-import { showType } from './type';
+import { IGoods, showType } from './type';
 import { useDispatch, useSelector } from 'react-redux';
 import Search from './Search';
 import Checkbox from './Checkbox';
 
-export let FilterGoodsData = GoodsData
 
 
-const DelFilter = () => {
-    const Rus = document.getElementById('Россия') as HTMLInputElement | null;
-    if (Rus != null) {
-        Rus.checked = true;
-    }
-    const Fr = document.getElementById('Франция') as HTMLInputElement | null;
-    if (Fr != null) {
-        Fr.checked = true;
-    }
-    const Kor = document.getElementById('Южная Корея') as HTMLInputElement | null;
-    if (Kor != null) {
-        Kor.checked = true;
-    }
-
-    Rus.checked = false
-    Fr.checked = false
-    Kor.checked = false
-}
 
 const SideMenu: FC = () => {
 
     const State: any = useSelector<showType>(state => state)
     const CheckBoxList = State.CheckBoxList
+    const CheckBoxStates = State.CheckBox
 
-    const [MinPrice, setMinPrice] = useState(0)
-    const [MaxPrice, setMaxPrice] = useState(99999999)
+    const [MinPrice, setMinPrice] = useState(1)
+    const [MaxPrice, setMaxPrice] = useState(999999)
 
     const Filter = () => {
-        // const FilterGoods: Array<IGoods> = []
-        const goods = GoodsData
+        let FilterGoodsData: Array<IGoods> = []
+        let toPriceFilterGoods: Array<IGoods> = []
 
-        for (let i = 0; i < CheckBoxList.length; i++) {
-            const box = CheckBoxList.map(boxName => (
-                <Checkbox boxName={boxName} key={boxName} />
-            ))
-            console.log(box)
+        let goods = GoodsData
+        let TrueCheckBoxArray = filterTrueKeys(CheckBoxStates)
+
+        for (let i = 0; i < goods.length; i++) {
+            const even = (element) => element === goods[i].maker;
+            if (TrueCheckBoxArray.some(even)) {
+                toPriceFilterGoods.push(goods[i])
+            }
         }
+        if (toPriceFilterGoods.length === 0) { toPriceFilterGoods = goods }
+        FilterGoodsData = toPriceFilterGoods.filter(item => item.price >= MinPrice && item.price <= MaxPrice)
 
-        FilterGoodsData = goods.filter(item => item.price >= MinPrice && item.price <= MaxPrice)
-        chengeCatalog()
+        dispatch({ type: "chengeCatalog", payload: { FilterGoodsData } })
+        console.log(FilterGoodsData)
         return FilterGoodsData
 
     }
 
-    const dispatch = useDispatch()
-    const chengeCatalog = () => {
-        dispatch({ type: "chengeCatalog" });
+    function filterTrueKeys(obj) {
+        let trueKeys = [];
+        for (let key in obj) {
+            if (obj[key] === true) {
+                trueKeys.push(key);
+            }
+        }
+        return trueKeys;
     }
+
+    const dispatch = useDispatch()
     const allCheckbox = () => {
         dispatch({ type: "allCheckbox" });
     }
@@ -118,7 +112,13 @@ const SideMenu: FC = () => {
     const FilterUlAll = () => {
         dispatch({ type: "FilterUlAll" })
     }
+    
+    const DelFilter = () => {
+        setMinPrice(null)
+        setMaxPrice(null)
+        dispatch({ type: 'DelFilter' })
 
+    }
     return (
         <div className='SideMenu'>
             <div className="SideMenu__filter">
@@ -128,9 +128,9 @@ const SideMenu: FC = () => {
                 <div className="price__filter">
                     <h4 className="positions__subheader"> Цена ₽ </h4>
                     <div className="price__box">
-                        <input className='price__input' type="number" placeholder='0' onChange={e => { setMinPrice(+e.target.value) }} />
+                        <input className='price__input' type="number" value={MinPrice} onChange={e => { setMinPrice(+e.target.value) }} />
                         -
-                        <input className='price__input' type="number" placeholder='999999' onChange={e => { setMaxPrice(+e.target.value) }} />
+                        <input className='price__input' type="number" value={MaxPrice} onChange={e => { setMaxPrice(+e.target.value) }} />
                     </div>
                 </div>
 
@@ -139,21 +139,8 @@ const SideMenu: FC = () => {
                     <Search />
 
                     {CheckBoxList.map(boxName => (
-                        <Checkbox boxName={boxName} key={boxName} />
+                        <Checkbox boxName={boxName} key={boxName}/>
                     ))}
-
-                    {/* <div className="filter">
-                        <input type="checkbox" name="maker" id='Россия' />
-                        <label htmlFor='Россия' onClick={RusCheck}>Россия</label>
-                    </div>
-                    <div className="filter">
-                        <input type="checkbox" name="maker" id='Франция' />
-                        <label htmlFor='Франция' onClick={FrCheck}>Франция</label>
-                    </div>
-                    <div className="filter">
-                        <input type="checkbox" name="maker" id='Южная Корея' />
-                        <label htmlFor='Южная Корея' onClick={KorCheck}>Южная Корея</label>
-                    </div> */}
                     <div className='more' onClick={allCheckbox}>Показать все</div>
                 </div>
                 <div className="check__filter">
