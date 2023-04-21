@@ -8,13 +8,11 @@ import { Link } from 'react-router-dom';
 const GoodsAdminItem: FC<IGoodsItem> = ({ goods }) => {
 
     const dispatch = useDispatch()
-    const GoodsPageShow = () => {
-        dispatch({ type: "GoodsPageShow", payload: goods.id })
-    }
+
     const removeDataID = (id: string) => {
         dispatch(removeFromData(id))
     }
-    
+    const OpenGood = () => { dispatch({ type: 'GoodsPageShow', payload: goods.id }) }
     return (
         <div className='Good__position' key={goods.id} data-testid='GoodsAdmin'>
             <img className='good__img' src={goods.img} alt={goods.name} />
@@ -22,7 +20,7 @@ const GoodsAdminItem: FC<IGoodsItem> = ({ goods }) => {
                 <p>{goods.sizeName}</p>
                 <p>{goods.sizeValue}</p>
             </div>
-            <Link className='good__name' to={`/${goods.id}`} onClick={GoodsPageShow}> {goods.name}</Link>
+            <Link className='good__name' to={`/${goods.id}`} onClick={OpenGood} > {goods.name}</Link>
             <div className="good__info">
                 <p> Штрихкод: {goods.id}</p>
                 <p> Производитель: {goods.maker}</p>

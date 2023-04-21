@@ -1,12 +1,12 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import TYImg from '../assets/TY.svg';
-import { showType } from './type';
+import { TypeState } from './type';
 
 
 const Thanks = () => {
     
-    const ThaksShow = useSelector<showType>(state => state.ThaksShow)
+    const ThaksShow = useSelector<TypeState>(state => state.ThaksShow)
     const ShowClass = ThaksShow ? 'show' : 'hide'
     
     const dispatch = useDispatch()

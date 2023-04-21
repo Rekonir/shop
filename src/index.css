@@ -1243,41 +1243,41 @@ h3.positions__subheader {
   .Catalog .SideMenu {
     display: none;
   }
-  .Catalog .GoodsPage {
+  .GoodsPage {
     margin: 0;
     padding: 0 15px;
     gap: 0;
   }
-  .Catalog .GoodsPage .Goods__content {
+  .GoodsPage .Goods__content {
     padding: 0;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     gap: 15px;
   }
-  .Catalog .GoodsPage .Goods__content img {
+  .GoodsPage .Goods__content img {
     max-width: 290px;
     max-height: 200px;
   }
-  .Catalog .GoodsPage .Goods__content .content__info {
+  .GoodsPage .Goods__content .content__info {
     width: 100%;
   }
-  .Catalog .GoodsPage .Goods__content .content__info .good__size {
+  .GoodsPage .Goods__content .content__info .good__size {
     display: none;
   }
-  .Catalog .GoodsPage .Goods__content .content__info .content__price {
+  .GoodsPage .Goods__content .content__info .content__price {
     width: 100%;
     justify-content: start;
     align-items: baseline;
     flex-wrap: wrap;
     gap: 25px;
   }
-  .Catalog .GoodsPage .Goods__content .content__info .content__price .toCart__btn {
+  .GoodsPage .Goods__content .content__info .content__price .toCart__btn {
     min-width: 184px;
     min-height: 60px;
     margin-right: 120px;
   }
-  .Catalog .GoodsPage .Goods__content .content__info .content__action {
+  .GoodsPage .Goods__content .content__info .content__action {
     width: 100%;
     padding: 0;
     position: relative;
@@ -1286,15 +1286,15 @@ h3.positions__subheader {
     flex-wrap: wrap;
     gap: 60px;
   }
-  .Catalog .GoodsPage .Goods__content .content__info .content__action img[alt=Поделиться] {
+  .GoodsPage .Goods__content .content__info .content__action img[alt=Поделиться] {
     position: absolute;
     top: -75px;
     right: 20px;
   }
-  .Catalog .GoodsPage .Goods__content .content__info .content__action .btn {
+  .GoodsPage .Goods__content .content__info .content__action .btn {
     width: 100%;
   }
-  .Catalog .GoodsPage .Goods__content .content__info .good__info:last-child {
+  .GoodsPage .Goods__content .content__info .good__info:last-child {
     display: none;
   }
   .CartPage {

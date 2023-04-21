@@ -17,12 +17,7 @@ import BlackLogoBox from './BlackLogoBox';
 const Header: FC = () => {
 
     const dispatch = useDispatch()
-
-    const ShowAdmin = () => {
-        dispatch({ type: "ShowAdmin" })
-    }
-
-    const toggleSide = () => {
+       const toggleSide = () => {
         dispatch({ type: "toggleSide" })
     }
     return (
@@ -50,8 +45,8 @@ const Header: FC = () => {
                         <img src={BurgMenu} alt="Меню" />
                     </Link>
                     <BlackLogoBox />
-                    <Link to='/admin' className="btn" onClick={ShowAdmin}>
-                        <p>Каталог</p>
+                    <Link to='/admin' className="btn">
+                        <p>Admin</p>
                         <img src={btnImg} alt="" />
                     </Link>
                     <Search />
@@ -73,7 +68,7 @@ const Header: FC = () => {
                 </div>
             </div>
             <div className="Mobile__Down">
-                <Link to='/admin' className="btn" onClick={ShowAdmin} data-testid='AdminBtn'>
+                <Link to='/admin' className="btn" data-testid='AdminBtn'>
                     <img src={btnImgBlack} alt="" />
                     <p>Каталог</p>
                 </Link>

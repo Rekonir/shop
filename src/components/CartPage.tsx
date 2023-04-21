@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import Del from '../assets/del.svg'
 import { useDispatch, useSelector } from 'react-redux';
-import { showType } from './type';
+import { TypeState } from './type';
 import Quantity from './Quantity';
 import { Link } from 'react-router-dom';
 import { removeFromCart } from '../store/cart/action';
@@ -9,12 +9,11 @@ import { removeFromCart } from '../store/cart/action';
 
 
 const CartPage: FC = () => {
-    const inCart= true
-    const State: any = useSelector<showType>(state => state)
+    const inCart = true
+    const State: any = useSelector<TypeState>(state => state)
     const CartData = State.CartPool
     const Total = CartData.reduce((acc: number, item: any) => acc + item.price * item.counter, 0)
-    const CartShow = State.CartShow
-    const ShowClass = CartShow ? 'show' : 'hide'
+
 
     const dispatch = useDispatch()
     const ShowThxBtn = () => {
@@ -24,7 +23,7 @@ const CartPage: FC = () => {
         dispatch(removeFromCart(id))
     }
     return (
-        <div className={`CartPage ${ShowClass}`}>
+        <div className={`CartPage`}>
             <div className="map__nav">
                 <ul>
                     <li>Главная</li>
@@ -34,7 +33,7 @@ const CartPage: FC = () => {
             <h1 className="Page__header">Корзина</h1>
 
             {CartData.map(goods => {
-                const OpenGood = () => {dispatch({ type: 'GoodsPageShow', payload: goods.id })}
+                const OpenGood = () => { dispatch({ type: 'GoodsPageShow', payload: goods.id }) }
                 return (
                     <div className="Cart__position" key={goods.id} data-testid='CartGood'>
                         <img src={goods.img} alt={goods.name} />
@@ -54,7 +53,7 @@ const CartPage: FC = () => {
                     </div>
                 )
             })}
-            
+
             <div className="Cart__total">
                 <Link to='/' className="btn" onClick={ShowThxBtn}>
                     <p>Оформить заказ</p>

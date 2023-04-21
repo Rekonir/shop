@@ -14,14 +14,13 @@ import { useDispatch } from 'react-redux';
 
 
 const BlackLogoBox: FC = () => {
-
     const dispatch = useDispatch()
-    const ShowCatalogBtn = () => {
-        dispatch({ type: "CatatlodShow" });
+    const UpFilterShow = ()=>{
+        dispatch({type:'CatatlodShow'})
     }
 
     return (
-        <Link to='/' className="logo__box" onClick={ShowCatalogBtn} data-testid='CatalogBtn'>
+        <Link to='/' className="logo__box" onClick={UpFilterShow} data-testid='CatalogBtn'>
             <img className='logo' src={BLogoImg} alt='логотип'></img>
             <img className='logo1' src={BLogoImg1} alt='логотип'></img>
             <img className='logo2' src={BLogoImg1} alt='логотип'></img>

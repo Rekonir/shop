@@ -20,31 +20,18 @@ export interface IGoodsItem {
 export interface ICartItem extends IGoods {
     counter: number
 }
-export type showType = {
-    UpFilterShow?: boolean,
-    GoodsPageShow?: boolean,
-    GoodsPageId?: string,
-    CartShow?: boolean,
-    CatatlodShow?: boolean,
-    ThaksShow?: boolean,
-    chengeCatalog?: Array<IGoods>
-    CartPool?: Array<IGoods>
-    ShowAdmin?: boolean,
-    CheckBoxList?: Array<string>,
-    priceFilter?: [number, number]
-    CheckBox?: Object,
-    FilterDelState?: boolean,
-    showFilterUl1?: boolean,
-    showFilterUl2?: boolean,
-    showFilterUl3?: boolean,
-    showFilterUl4?: boolean,
-    showFilterUl5?: boolean,
-    showFilterUl6?: boolean,
-    showFilterUl7?: boolean,
-    showFilterUl8?: boolean,
-    FilterUl?:string,
-    AllUl?:Array<string>,
-    ChooseUl?:Array<string>,
+export type TypeState = {
+    UpFilterShow: boolean,
+    GoodsPageId: string,
+    ThaksShow: boolean,
+    chengeCatalog: Array<IGoods>,
+    CartPool: Array<IGoods>,
+    CheckBoxList: Array<string>,
+    CheckBox: Object,
+    FilterDelState: boolean,
+    FilterUl: string,
+    AllUl: Array<string>,
+    ChooseUl: Array<string>,
 }
 export type checkedState = {
 

@@ -1,7 +1,7 @@
 import React, { FC, useState } from 'react';
 import SideMenu from './SideMenu';
 import GoodsItem from './GoodsItem';
-import { showType } from './type';
+import { TypeState } from './type';
 import { useSelector } from 'react-redux';
 import Pagination from './Pagination';
 
@@ -10,10 +10,8 @@ import Pagination from './Pagination';
 
 const Catalog: FC = () => {
 
-    const State: any = useSelector<showType>(state => state)
+    const State: any = useSelector<TypeState>(state => state)
     const chengeCatalog = State.chengeCatalog
-    const ShowClass = State.CatatlodShow ? 'show' : 'hide'
-    const PageShowClass = State.GoodsPageShow ? 'show' : 'hide'
 
     const [currentPage, setCurrentPage] = useState(1)
     const [goodsPerPage] = useState(10)
@@ -31,23 +29,23 @@ const Catalog: FC = () => {
         setCurrentPage(prev => prev < 2 ? 1 : prev - 1)
     }
     return (
-        <div className={`Catalog ${ShowClass}`} data-testid='CatalogRoute'>
+        <div className={`Catalog`} data-testid='CatalogRoute'>
             <SideMenu />
             <div className="Page__goods">
-                <div className={`Goods ${PageShowClass}`}>
+                <div className={`Goods`}>
 
                     {currentGoods.map(goods => (
                         <GoodsItem goods={goods} key={goods.id} />
                     ))}
 
                 </div>
-                <div className={`page__box ${PageShowClass}`}>
+                <div className={`page__box`}>
                     <button className="page__arrow" onClick={lastPage}> {'<'} </button>
-                    <Pagination maxPage={maxPage}  currentPage={currentPage} paginate={paginate} />
+                    <Pagination maxPage={maxPage} currentPage={currentPage} paginate={paginate} />
                     <button className="page__arrow" onClick={nextPage}> {'>'} </button>
                 </div>
 
-                <p className={`"Page__text" ${PageShowClass}`}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam interdum ut justo, vestibulum sagittis
+                <p className={"Page__text"}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam interdum ut justo, vestibulum sagittis
                     iaculis iaculis. Quis mattis vulputate feugiat massa vestibulum duis. Faucibus consectetur aliquet sed pellentesque consequat consectetur
                     congue mauris venenatis. Nunc elit, dignissim sed nulla ullamcorper enim, malesuada.
                 </p>

@@ -12,10 +12,8 @@ const GoodsItem: FC<IGoodsItem> = ({ goods }) => {
     const addHandler = () => {
         dispatch(addToCart(goods, goods.counter))
     }
-    const GoodsPageShow = ()=>{
-        dispatch({type: "GoodsPageShow", payload: goods.id})
-    }
-    
+   
+    const OpenGood = () => { dispatch({ type: 'GoodsPageShow', payload: goods.id }) }
     return (
         <div className='Good__position' key={goods.id} >
             <img className='good__img' src={goods.img} alt={goods.name} />
@@ -23,7 +21,7 @@ const GoodsItem: FC<IGoodsItem> = ({ goods }) => {
                 <p>{goods.sizeName}</p>
                 <p>{goods.sizeValue}</p>
             </div>
-            <Link className='good__name' to={`/${goods.id}`} onClick={GoodsPageShow} data-testid='GoodsPageBtn'> {goods.name}</Link>
+            <Link className='good__name' to={`/${goods.id}`} onClick={OpenGood} data-testid='GoodsPageBtn'> {goods.name}</Link>
             <div className="good__info">
                 <p> Штрихкод: {goods.id}</p>
                 <p> Производитель: {goods.maker}</p>

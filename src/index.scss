@@ -845,10 +845,10 @@ h3.positions__subheader {
         justify-content: center;
         align-items: center;
         cursor: pointer;
-        .btn{
+        .btn {
             width: 40px;
             height: 40px;
-            border: none
+            border: none;
         }
     }
 }
@@ -1237,59 +1237,59 @@ h3.positions__subheader {
         .SideMenu {
             display: none;
         }
+    }
 
-        .GoodsPage {
-            margin: 0;
-            padding: 0 15px;
-            gap: 0;
-            .Goods__content {
-                padding: 0;
-                justify-content: center;
-                align-items: center;
-                flex-direction: column;
-                gap: 15px;
-                img {
-                    max-width: 290px;
-                    max-height: 200px;
+    .GoodsPage {
+        margin: 0;
+        padding: 0 15px;
+        gap: 0;
+        .Goods__content {
+            padding: 0;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            gap: 15px;
+            img {
+                max-width: 290px;
+                max-height: 200px;
+            }
+            .content__info {
+                width: 100%;
+                .good__size {
+                    display: none;
                 }
-                .content__info {
+                .content__price {
                     width: 100%;
-                    .good__size {
-                        display: none;
+                    justify-content: start;
+                    align-items: baseline;
+                    flex-wrap: wrap;
+                    gap: 25px;
+                    .toCart__btn {
+                        min-width: 184px;
+                        min-height: 60px;
+                        margin-right: 120px;
                     }
-                    .content__price {
-                        width: 100%;
-                        justify-content: start;
-                        align-items: baseline;
-                        flex-wrap: wrap;
-                        gap: 25px;
-                        .toCart__btn {
-                            min-width: 184px;
-                            min-height: 60px;
-                            margin-right: 120px;
-                        }
-                    }
-                    .content__action {
-                        width: 100%;
-                        padding: 0;
-                        position: relative;
-                        justify-content: start;
-                        align-items: start;
-                        flex-wrap: wrap;
-                        gap: 60px;
+                }
+                .content__action {
+                    width: 100%;
+                    padding: 0;
+                    position: relative;
+                    justify-content: start;
+                    align-items: start;
+                    flex-wrap: wrap;
+                    gap: 60px;
 
-                        img[alt="Поделиться"] {
-                            position: absolute;
-                            top: -75px;
-                            right: 20px;
-                        }
-                        .btn {
-                            width: 100%;
-                        }
+                    img[alt="Поделиться"] {
+                        position: absolute;
+                        top: -75px;
+                        right: 20px;
                     }
-                    .good__info:last-child {
-                        display: none;
+                    .btn {
+                        width: 100%;
                     }
+                }
+                .good__info:last-child {
+                    display: none;
                 }
             }
         }

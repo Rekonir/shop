@@ -1,12 +1,12 @@
 import React, { FC } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { showType } from './type';
+import { TypeState } from './type';
 
 
 
 const UpFilter: FC = () => {
 
-    const State: any = useSelector<showType>(state => state)
+    const State: any = useSelector<TypeState>(state => state)
 
     const dispatch = useDispatch()
 
@@ -17,7 +17,7 @@ const UpFilter: FC = () => {
         if (Sort.options.selectedIndex === 2) { dispatch({ type: "SotrPriceUp" }) }
         if (Sort.options.selectedIndex === 3) { dispatch({ type: "SotrPriceDown" }) }
     }
-    const UpFilterShow = useSelector<showType>(state => state.UpFilterShow)
+    const UpFilterShow = useSelector<TypeState>(state => state.UpFilterShow)
     const ShowClass = UpFilterShow ? 'show' : 'hide'
     const FilterUlAll = () => {
         dispatch({ type: "FilterUlAll" })

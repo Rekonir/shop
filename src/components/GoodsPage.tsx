@@ -5,7 +5,7 @@ import CartImg from '../assets/to cart icon.svg'
 import GoodsData from '../GoodsData.json'
 import Quantity from './Quantity';
 import { useDispatch, useSelector } from 'react-redux';
-import { showType } from './type';
+import { TypeState } from './type';
 
 
 const GoodsPage: FC = () => {
@@ -13,16 +13,15 @@ const GoodsPage: FC = () => {
 
     const dispatch = useDispatch()
    
-    const GoodsPageId = useSelector<showType>(state => state.GoodsPageId)
-    let goods = GoodsData.find(item => item.id === GoodsPageId)
+    const State:any = useSelector<TypeState>(state => state)
+    let goods = GoodsData.find(item => item.id === State.GoodsPageId)
 
     const addToCartPageGoods = () => {
 		dispatch({type: 'addToCartPageGoods', payload: goods})
     }
-    const GoodsPageShow = useSelector<showType>(state => state.GoodsPageShow)
-    const ShowClass = GoodsPageShow ? 'show' : 'hide'
+   
     return (
-        <div className={`GoodsPage ${ShowClass}`} key={goods.id} >
+        <div className={`GoodsPage`} key={goods.id} >
             <div className="map__nav">
                 <ul>
                     <li>Главная</li>

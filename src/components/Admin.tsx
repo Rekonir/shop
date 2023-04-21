@@ -2,11 +2,11 @@ import React, { FC } from 'react';
 import SideMenu from './SideMenu';
 import GoodsAdminItem from './GoodsAdminItem';
 import { useSelector } from 'react-redux';
-import { showType } from './type';
+import { TypeState } from './type';
 import AdminBox from './AdminBox';
 
 const Admin: FC = () => {
-    const State: any = useSelector<showType>(state => state)
+    const State: any = useSelector<TypeState>(state => state)
     const chengeCatalog = State.chengeCatalog
     return (
         <div className={`Catalog`} data-testid='AdminRoute'>

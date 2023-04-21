@@ -1,28 +1,15 @@
 import { createStore } from "redux";
-import { showType } from "../components/type";
+import { TypeState } from "../components/type";
 import GoodsData from '../GoodsData.json'
 
 
-const defShow: showType = {
+const defShow: TypeState = {
     UpFilterShow: true,
-    GoodsPageShow: false,
     GoodsPageId: "1",
-    CartShow: false,
-    CatatlodShow: true,
     ThaksShow: false,
     chengeCatalog: GoodsData,
     CartPool: [],
-    ShowAdmin: false,
-    showFilterUl1: true,
-    showFilterUl2: true,
-    showFilterUl3: true,
-    showFilterUl4: true,
-    showFilterUl5: true,
-    showFilterUl6: true,
-    showFilterUl7: true,
-    showFilterUl8: true,
     CheckBoxList: ['Россия', 'Франция', 'Южная Корея'],
-    priceFilter: [0, 9999999],
     CheckBox: {
         'Россия': false,
         'Франция': false,
@@ -37,22 +24,22 @@ const defShow: showType = {
 
 export const storeReducer = (state = defShow, action: any) => {
     switch (action.type) {
+        case "GoodsPageShow":
+            return {
+                ...state, UpFilterShow: false, GoodsPageId: action.payload
+            }
 
         case "CartShow":
             return {
-                ...state, CartShow: true, CatatlodShow: true, GoodsPageShow: true, UpFilterShow: false
+                ...state,  UpFilterShow: false
             }
         case "CatatlodShow":
             return {
-                ...state, CatatlodShow: true, CartShow: true, GoodsPageShow: true, UpFilterShow: true
+                ...state,  UpFilterShow: true
             }
         case "ThaksShow":
             return {
                 ...state, ThaksShow: !state.ThaksShow, CartPool: [], chengeCatalog: GoodsData, UpFilterShow: true
-            }
-        case "GoodsPageShow":
-            return {
-                ...state, GoodsPageShow: true, CartShow: true, CatatlodShow: true, UpFilterShow: false, GoodsPageId: action.payload
             }
         case 'toggleSide':
             return {

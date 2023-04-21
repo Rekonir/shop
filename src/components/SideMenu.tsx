@@ -7,7 +7,7 @@ import brend5 from '../assets/brend5.svg'
 import SearchIcon from '../assets/saerch icon.svg'
 import Del from '../assets/del.svg'
 import GoodsData from '../GoodsData.json'
-import { IGoods, showType } from './type';
+import { IGoods, TypeState } from './type';
 import { useDispatch, useSelector } from 'react-redux';
 import Search from './Search';
 import Checkbox from './Checkbox';
@@ -17,7 +17,7 @@ import Checkbox from './Checkbox';
 
 const SideMenu: FC = () => {
 
-    const State: any = useSelector<showType>(state => state)
+    const State: any = useSelector<TypeState>(state => state)
     const CheckBoxList = State.CheckBoxList
     const CheckBoxStates = State.CheckBox
 

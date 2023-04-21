@@ -3,11 +3,11 @@ import React, { useState } from 'react';
 import SearchIcon from '../assets/saerch icon.svg'
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
-import { showType } from './type';
+import { TypeState } from './type';
 
 
 const Search = () => {
-    const State: showType = useSelector(state => state)
+    const State: any = useSelector<TypeState>(state => state)
     const [check, setCheckBoxList] = useState('')
     const dispatch = useDispatch()
     const checkiflter = () => {
