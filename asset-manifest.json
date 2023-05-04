@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/shop/static/css/main.ded18111.css",
-    "main.js": "/shop/static/js/main.50007c26.js",
+    "main.css": "/shop/static/css/main.54116174.css",
+    "main.js": "/shop/static/js/main.8291eec0.js",
     "static/media/Inter-VariableFont_slnt,wght.ttf": "/shop/static/media/Inter-VariableFont_slnt,wght.aadb65ac45347ff46699.ttf",
     "static/media/brend5.svg": "/shop/static/media/brend5.a1e575daf7b3f77f89a7345096e139dd.svg",
     "static/media/brend3.svg": "/shop/static/media/brend3.30f0bce17b90eca934a3c240721465e3.svg",
@@ -11,7 +11,7 @@
     "static/media/map.png": "/shop/static/media/map.b3cbb3ff0be516d67ad0.png",
     "static/media/mastercard.svg": "/shop/static/media/mastercard.75b61e2bb1fb986d62c65a547664560d.svg",
     "static/media/logo.svg": "/shop/static/media/logo.226708cea4cef7e0f370a5f3738b20ae.svg",
-    "static/media/logo white.svg": "/shop/static/media/logo white.a733a866739750e293b4757e9cd9e27c.svg",
+    "static/media/logo white.svg": "/shop/static/media/logo white.16bbd577ef790605cf38354d58aaf4a0.svg",
     "static/media/whatsapp.svg": "/shop/static/media/whatsapp.f2883296e5f8c40374f487bfc522416c.svg",
     "static/media/to cart icon.svg": "/shop/static/media/to cart icon.a01cc6d208c6df982a93cbd6d28e73e7.svg",
     "static/media/cart  icon.svg": "/shop/static/media/cart  icon.7e3f10a67cbf7efab90673a8b0ccf897.svg",
@@ -41,11 +41,11 @@
     "static/media/logo t.svg": "/shop/static/media/logo t.3fe2aa0e015630159630cacdb4563718.svg",
     "static/media/logo t white.svg": "/shop/static/media/logo t white.a3a022388eb8bac032efd0b4a6d08dc8.svg",
     "static/media/email btn.svg": "/shop/static/media/email btn.35ab94e2f8817f324bd31c2293385fa8.svg",
-    "main.ded18111.css.map": "/shop/static/css/main.ded18111.css.map",
-    "main.50007c26.js.map": "/shop/static/js/main.50007c26.js.map"
+    "main.54116174.css.map": "/shop/static/css/main.54116174.css.map",
+    "main.8291eec0.js.map": "/shop/static/js/main.8291eec0.js.map"
   },
   "entrypoints": [
-    "static/css/main.ded18111.css",
-    "static/js/main.50007c26.js"
+    "static/css/main.54116174.css",
+    "static/js/main.8291eec0.js"
   ]
 }
