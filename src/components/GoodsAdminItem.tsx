@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 import { IGoodsItem } from './type';
 import Del from '../assets/del.svg'
 import { useDispatch } from 'react-redux';
-import { removeFromData } from '../store/cart/action';
+import { removeFromData } from '../store/actions/action';
 import { Link } from 'react-router-dom';
 
 const GoodsAdminItem: FC<IGoodsItem> = ({ goods }) => {

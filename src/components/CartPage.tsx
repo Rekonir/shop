@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { TypeState } from './type';
 import Quantity from './Quantity';
 import { Link } from 'react-router-dom';
-import { removeFromCart } from '../store/cart/action';
+import { removeFromCart } from '../store/actions/action';
 
 
 

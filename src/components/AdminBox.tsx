@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { addPosition } from '../store/cart/action';
+import { addPosition } from '../store/actions/action';
 import { IGoods } from './type';
 
 const AdminBox = () => {

@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 import { IGoodsItem } from './type';
 import CartImg from '../assets/to cart icon.svg'
 import { useDispatch } from 'react-redux';
-import { addToCart } from '../store/cart/action';
+import { addToCart } from '../store/actions/action';
 import { Link } from 'react-router-dom';
 
 const GoodsItem: FC<IGoodsItem> = ({ goods }) => {

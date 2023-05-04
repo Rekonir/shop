@@ -140,8 +140,6 @@ export const storeReducer = (state = defShow, action: any) => {
         }
         case 'CheckBox': {
             const { boxName, NewStateCheckBox } = action.payload
-            console.log(action.payload)
-
             function updateCheckBoxValue(obj, key, newValue) {
                 if (obj.hasOwnProperty(key)) {
                     obj[key] = newValue;
@@ -154,7 +152,6 @@ export const storeReducer = (state = defShow, action: any) => {
                 }
             }
             updateCheckBoxValue(state.CheckBox, boxName, NewStateCheckBox)
-            console.log(state.CheckBox)
             return { ...state, CheckBox: state.CheckBox }
         }
         case "allCheckbox": {
